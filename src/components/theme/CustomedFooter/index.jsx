@@ -47,7 +47,7 @@ export const CustomedFooter = () => {
 
                     {footerInfo.map((item, index) => (
                         <FooterInfo
-                            to={item.link}
+                            to={item.link || '/'}
                             key={index} >
                             {item.title}
                         </FooterInfo>

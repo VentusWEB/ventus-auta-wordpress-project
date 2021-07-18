@@ -70,7 +70,7 @@ export const ProductCard = ({ children, bgImage, product, i }) => {
                         left: (even ? "0" : "")
                     }}
                 >
-                    <ProductImg image={cardImage} />
+                    <ProductImg image={cardImage} alt={product.name} />
                     <SectionTitle
                         style={{
                             textAlign: (even ? "right" : "left"),

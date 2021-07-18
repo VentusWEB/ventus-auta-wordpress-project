@@ -50,27 +50,15 @@ export const query = graphql`
         childImageSharp {
           gatsbyImageData
         }
-      }
-      gallery{
-        image {
-          childImageSharp {
-            thumb: gatsbyImageData(
-              width: 50
-              height: 50
-              placeholder: BLURRED
-            )
-            full: gatsbyImageData(layout: FULL_WIDTH)
-          
-          }
-        }
+        name
       }
 
       photos: gallery{
         image {
           childImageSharp {
             gatsbyImageData
-          
           }
+          name
         }
       }
     }
@@ -95,16 +83,6 @@ const ProductPage = ({ data, key }) => {
 
   const mainImage = productData.mainImage
 
-  const images = productData.gallery.map((item) => {
-    return ({
-      ...item.image.childImageSharp,
-      caption: `Ventus Trade`,
-      underCaptionName: item.name,
-      underCaptionSize: item.size,
-
-    })
-  })
-
   const photos = productData.photos
   return (
     <Layout alternativeLinks={alternativeLinks}>
@@ -125,10 +103,8 @@ const ProductPage = ({ data, key }) => {
 
       <ModalContainer>
 
-
         <ModalGalleryBox>
-
-          <ProductModalGallery images={images} mainImage={mainImage} photos={photos} />
+          <ProductModalGallery mainImage={mainImage} photos={photos} />
         </ModalGalleryBox>
 
         <ModalInfoBox>

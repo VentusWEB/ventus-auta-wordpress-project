@@ -1,4 +1,4 @@
-import React/* , { useEffect, useRef, useState } */ from "react"
+import React from "react"
 import { Link } from "gatsby"
 
 
@@ -52,12 +52,16 @@ const DesktopNavMenu = ({ links }) => {
               <>
                 {
                   link.scrollId && (
-                    <li><AnchorLink href={link.scrollId}>{link.name}</AnchorLink></li>
+                    <li><AnchorLink
+                      activeStyle={{ color: "red" }}
+                      href={link.scrollId}>{link.name}</AnchorLink></li>
                   )}
 
                 {
                   link.path && (
-                    <li><Link href={link.path}>{link.name}</Link></li>
+                    <li><Link
+                      activeStyle={{ color: "red" }}
+                      to={link.path || '/'}>{link.name}</Link></li>
                   )}
 
               </>

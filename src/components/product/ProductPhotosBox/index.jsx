@@ -5,7 +5,6 @@ import { GalleryLightBox } from "components/tools"
 import { getImage } from 'gatsby-plugin-image'
 
 export const ProductPhotosBox = ({ images, mainImage }) => {
-  const { theme } = useContext(ThemeContext);
 
   const image = getImage(mainImage)
 

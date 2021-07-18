@@ -75,7 +75,6 @@ export const Seo = ({
 			<link rel="publisher" href={socialLinks.google} />
 			<title>{title}</title>
 			<html lang="pl" dir="ltr" />
-
 		</Helmet>
 	);
 };

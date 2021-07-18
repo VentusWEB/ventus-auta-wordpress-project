@@ -36,11 +36,8 @@ export const Offer = ({ productData }) => {
                                 <ProductCard key={i} product={product} bgImage={product.mainImage.childImageSharp.gatsbyImageData} i={i} />
                             </>
 
-
                         )
                     })}
-
-
 
                 </ProductsWrapper>
                 <SectionTitle black

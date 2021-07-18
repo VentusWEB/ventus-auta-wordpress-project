@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ModalContainer, ModalBox, CloseIcon, OpenIcon, ModalGatsbyImage, ModalImageBox } from "./styles"
 
-export const ModalImage = ({ currentImg }) => {
+export const ModalImage = ({ currentImg, alt }) => {
 
     const [showModal, setShowModal] = useState(false)
 
@@ -34,7 +34,7 @@ export const ModalImage = ({ currentImg }) => {
                 }}
             >
                 <ModalImageBox>
-                    <ModalGatsbyImage image={currentImg} />
+                    <ModalGatsbyImage image={currentImg} alt={alt} />
                     <CloseIcon onClick={handleCloseModal} />
                 </ModalImageBox>
 

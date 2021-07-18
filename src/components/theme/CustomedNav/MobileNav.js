@@ -72,7 +72,7 @@ const MobileNavMenu = ({ links }) => {
 
                     {
                       link.path && (
-                        <li><Link href={link.path}>{link.name}</Link></li>
+                        <li><Link to={link.path}>{link.name || '/'}</Link></li>
                       )}
                   </>
                 )

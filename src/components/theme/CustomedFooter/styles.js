@@ -115,7 +115,7 @@ color: ${({ theme }) => theme.colors.third};
 
 `
 
-export const FooterLink = styled(Link)`
+export const FooterLink = styled.a`
   color: ${({ theme }) => theme.colors.primaryLight}; 
   text-decoration: none;
   margin: 0 10px;

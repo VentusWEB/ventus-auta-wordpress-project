@@ -89,12 +89,12 @@ export const ProductModalGallery = ({ photos }) => {
     }
 
     const currentImg = getImage(photos[photo].image.childImageSharp.gatsbyImageData)
-
+    const currentImgAlt = photos[photo].image.name
 
     return (
         <ModalBox onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} >
-            <ModalImage currentImg={currentImg} />
-            <GatsbyImage image={currentImg} />
+            <ModalImage currentImg={currentImg} alt={currentImgAlt} />
+            <GatsbyImage image={currentImg} alt={currentImgAlt} />
             <CounterBox><span>{photo + 1} / {galleryLength}</span></CounterBox>
             <ControlersBox onKeyUp={e => handleKeyUp(e)}>
                 <Controler onClick={handlePrev} className={photo + 1 === 1 ? "photos-end" : ""}>

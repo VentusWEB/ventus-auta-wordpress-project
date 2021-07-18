@@ -9,7 +9,7 @@ export function HeroHeader({
     small }) {
     return (
         <HeroHeaderBox small={small}>
-            <HeroHeaderImg image={bgImage} />
+            <HeroHeaderImg image={bgImage} alt="Ventus Trade" />
             <HeroHeaderText small={small}>
                 <h2>{HeroBrandName}</h2>
                 <h4>{HeroSubName}</h4>
