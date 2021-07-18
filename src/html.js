@@ -22,7 +22,7 @@ export default function HTML(props) {
                     dangerouslySetInnerHTML={{ __html: props.body }}
                 />
                 {props.postBodyComponents}
-                <script
+                {/*                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
                         <!-- Yandex.Metrika counter -->
@@ -43,7 +43,7 @@ export default function HTML(props) {
                         <!-- /Yandex.Metrika counter -->
             `
                     }}
-                />
+                /> */}
             </body>
         </html>
     )
