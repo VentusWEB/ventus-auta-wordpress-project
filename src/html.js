@@ -27,21 +27,19 @@ export default function HTML(props) {
                         __html: `
                         <!-- Yandex.Metrika counter -->
                         <script type="text/javascript" >
-                            setTimeout(function(){
-                                (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
                            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
                            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
                         
-                           ym(83027727, "init", {
+                           ym(64917802, "init", {
                                 clickmap:true,
                                 trackLinks:true,
                                 accurateTrackBounce:true,
                                 webvisor:true,
                                 ecommerce:"dataLayer"
                            });
-                           }, 5000);
                         </script>
-                        <noscript><div><img src="https://mc.yandex.ru/watch/83027727" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+                        <noscript><div><img src="https://mc.yandex.ru/watch/64917802" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
                         <!-- /Yandex.Metrika counter -->
             `
                     }}
