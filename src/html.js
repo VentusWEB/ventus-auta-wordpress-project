@@ -41,7 +41,7 @@ export default function HTML(props) {
                         });
                         }, 5000)
 
-                        </script><noscript><div><img src="https://mc.yandex.ru/watch/64917802" style="position: absolute; left: -9999px;" alt />
+                        </script><noscript><div><img src="https://mc.yandex.ru/watch/64917802" style="position: absolute; left: -9999px;" alt /></div></noscript>
             `
                     }}
                 />
