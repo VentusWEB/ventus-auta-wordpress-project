@@ -1,0 +1,38 @@
+{
+  "name": "gatsby-plugin-modal-gallery",
+  "version": "0.0.1",
+  "description": "A Gatsby Plugin that add modal gallery components for your Gatsby site",
+  "main": "index.js",
+  "scripts": {
+    "publish": "npm login",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulieScanlon/gatsby-plugin-modal-gallery.git"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "Aleksandra Śniegucka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Felikso/gatsby-plugin-modal-gallery/issues"
+  },
+  "homepage": "https://github.com/Felikso/gatsby-plugin-modal-gallery#readme",
+  "peerDependencies": {
+    "gatsby": "^3.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "babel-plugin-styled-components": "^1.13.2",
+    "charts.css": "^0.9.0",
+    "gatsby-plugin-image": "^1.13.0",
+    "gatsby-plugin-styled-components": "^4.13.0",
+    "react-modal": "^3.14.3",
+    "styled-components": "^5.3.1"
+  }
+}
