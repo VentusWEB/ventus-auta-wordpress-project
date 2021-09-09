@@ -1,0 +1,208 @@
+query PREVIEW_QUERY($id: ID!) {
+  lasykesmain(id: $id, idType: ID, asPreview: true) {
+    buttonText
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    deliveryPhone {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    desiredSlug
+    enclosure
+    features1 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    features2 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    features3 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    guid
+    headerImage {
+      __typename
+      id
+    }
+    htmlContent
+    id
+    infoText
+    isContentNode
+    isTermNode
+    item1 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    item2 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    item3 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    locationInfo {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    locationMap {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    mail {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    mainContent
+    messenger {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    modified
+    modifiedGmt
+    openedHours {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    order
+    paragraphs
+    phone {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    sectionTitle
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    textHeader
+    title
+    titleInfo
+    uri
+    vwAttachedMedia(first: 100) {
+      nodes {
+        __typename
+        id
+      }
+    }
+    whatsapp {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    __typename
+  }
+}

@@ -1,0 +1,76 @@
+query PREVIEW_QUERY($id: ID!) {
+  ventuswebadmin(id: $id, idType: ID, asPreview: true) {
+    components
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    enclosure
+    fieldsManager {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    fieldsManager2 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    fieldsManager3 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    guid
+    id
+    isContentNode
+    isTermNode
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    modified
+    modifiedGmt
+    picker
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    title
+    uri
+    vwAttachedMedia(first: 100) {
+      nodes {
+        __typename
+        id
+      }
+    }
+    __typename
+  }
+}

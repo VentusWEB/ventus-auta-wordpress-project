@@ -4,7 +4,7 @@ const _ = require("lodash");
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'plugins'), 'node_modules'],
     },
   });
 };

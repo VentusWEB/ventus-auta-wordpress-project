@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ControlersBox, Controler, ModalBox, CounterBox, ModalGatsbyImage } from './styles';
+import { ControlersBox, Controler, SingleModalBox, CounterBox, ModalGatsbyImage } from './styles';
 import { getImage } from "gatsby-plugin-image"
 
-/* Modal */
+import { Modal } from "./Modal"
 
-import { ModalGallery } from "../index"
+/* Modal */
 
 export const ProductModalGallery = ({ photos, styles }) => {
 
@@ -19,8 +19,6 @@ export const ProductModalGallery = ({ photos, styles }) => {
     const handleCloseModal = () => {
         setShowModal(false)
     }
-
-
 
     const [photo, setPhoto] = useState(0)
 
@@ -70,10 +68,6 @@ export const ProductModalGallery = ({ photos, styles }) => {
 
     })
 
-    useEffect(() => {
-    }, [photo])
-
-
     const [touchPosition, setTouchPosition] = useState(null)
     // ...
     const handleTouchStart = (e) => {
@@ -102,27 +96,45 @@ export const ProductModalGallery = ({ photos, styles }) => {
         setTouchPosition(null)
     }
 
-/*     const currentImg = getImage(photos[photo].image.childImageSharp.gatsbyImageData)
-    const currentImgAlt = photos[photo].image.name */
-
     const currentImg = getImage(photos[photo][0].gatsbyImageData)
     const currentImgAlt = photos[photo][1]
-    const currentIndex = photos[photo][2]
+
+    const currentPhoto = photo + 1
 
     return (
-        <div /* css={`min-height: 50vh;`} */>
-        <ModalBox   onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} touchPosition={touchPosition} setTouchPosition={setTouchPosition} >
-            {/* <ModalImage image={currentImg} alt={currentImgAlt} styles={styles} /> */}
-            <ModalGallery handleKeyUp={handleKeyUp} showModal={showModal} handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal} styles={styles} currentImg={currentImg} current={currentImg} photos={photos} setPhoto={setPhoto} photo={photo} changePhoto={setPhoto} index={currentIndex} />
+        <div css={`min-height: 50vh;`}>
+        <SingleModalBox   
+        onTouchStart={handleTouchStart} 
+        onTouchMove={handleTouchMove} 
+        >
+
+            <Modal 
+            handleTouchStart={handleTouchStart}
+            handleTouchMove={handleTouchMove}
+            handleNext={handleNext} 
+            handlePrev={handlePrev} 
+            handleKeyUp={handleKeyUp} 
+            showModal={showModal} 
+            handleOpenModal={handleOpenModal} 
+            handleCloseModal={handleCloseModal} 
+            styles={styles} 
+            currentImg={currentImg} 
+            current={currentImg} 
+            galleryLength={galleryLength} 
+            currentPhoto={currentPhoto} 
+            currentImg={currentImg}
+            currentImgAlt={currentImgAlt}
+             />
+
             <ModalGatsbyImage image={currentImg} alt={currentImgAlt} />
-            <CounterBox><span>{photo + 1} / {galleryLength}</span></CounterBox>
+            <CounterBox><span>{currentPhoto} / {galleryLength}</span></CounterBox>
             <ControlersBox onKeyUp={e => handleKeyUp(e)}>
-                <Controler onClick={handlePrev} className={photo + 1 === 1 ? "photos-end" : ""} styles={styles}>
+                <Controler onClick={handlePrev} className={currentPhoto === 1 ? "photos-end" : ""} styles={styles}>
                 </Controler>
-                <Controler onClick={handleNext} className={photo + 1 === galleryLength ? "photos-end" : "" } styles={styles}>
+                <Controler onClick={handleNext} className={currentPhoto === galleryLength ? "photos-end" : "" } styles={styles}>
                 </Controler>
             </ControlersBox>
-        </ModalBox>
+        </SingleModalBox>
         </div>
     );
 };

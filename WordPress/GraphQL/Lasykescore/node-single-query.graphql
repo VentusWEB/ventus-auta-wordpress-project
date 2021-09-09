@@ -1,0 +1,227 @@
+query SINGLE_CONTENT_QUERY($id: ID!) {
+  lasykescore(id: $id) {
+    author
+    background
+    city
+    contentType {
+      node {
+        id
+      }
+    }
+    country
+    databaseId
+    date
+    dateGmt
+    defaultDescription
+    defaultTitle
+    desiredSlug
+    dir
+    email
+    enclosure
+    facebook
+    facebookFooter {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    facebookNav {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    firstNavButtons {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    fontColor
+    footerInfo {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    foundingDate
+    github
+    guid
+    id
+    instagram
+    instagramFooter {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    instagramNav {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    isContentNode
+    isTermNode
+    lang
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    legalName
+    link
+    logoUrl
+    messengerFooter {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    messengerNav {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    modified
+    modifiedGmt
+    moveFillBgBottom
+    moveFillBgBottomDarkmode
+    moveFillBgTop
+    moveFillBgTopDarkmode
+    phone
+    phoneFooter {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    phoneNav {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    primary
+    primaryLight
+    region
+    secondNavButtons {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    secondary
+    secondaryLight
+    siteBrand
+    siteDescription
+    siteLogo {
+      __typename
+      id
+    }
+    siteSlogan
+    siteTtitle
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    third
+    thirdDarkmode
+    thumbnail {
+      __typename
+      id
+    }
+    title
+    twitter
+    uri
+    url
+    vwAttachedMedia(first: 100) {
+      nodes {
+        __typename
+        id
+      }
+    }
+    whatsappFooter {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    whatsappNav {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    zipCode
+    __typename
+  }
+}

@@ -4,7 +4,9 @@ import { Layout } from "components/theme"
 import { Seo, PropCard, Button, SectionTitle, HeroHeader } from "components/common";
 import { getImage } from 'gatsby-plugin-image'
 
-import { ProductModalGallery, VinBox, ParametersBox, GridContentBox, GridBoxDetails, GridInfoBox, ModalContainer, ModalInfoBox, ModalGalleryBox } from "components/product"
+import { ProductModalGallery } from 'gatsby-plugin-modal-gallery'
+
+import { VinBox, ParametersBox, GridContentBox, GridBoxDetails, GridInfoBox, ModalContainer, ModalInfoBox, ModalGalleryBox } from "components/product"
 
 import { alternativeLinks } from "constans/nav-items"
 
@@ -77,6 +79,36 @@ export const query = graphql`
 
 const ProductPage = ({ data, key }) => {
 
+  const styles = {
+    background : "red",
+    borderRadius :"30px",
+    transition : ".4s ease-in-out",
+    mediaWidth : "700px",
+    controlsColor : "white",
+    controlsSize : "10px",
+    controlsOpacity : ".9",
+    controlsColorHover : "black",
+    controlsOpacityHover : ".4",
+    controlsSizeBig  : "50px",
+    imgWidth: "200px",
+    imgHeight: "200px",
+    maxModalImgHeight: "90vh",
+    minModalImgHeight: "90vh",
+    maxModalImgWidth: "90vw",
+    minModalImgWidth: "90vw",
+  
+    overlay: {
+      backgroundColor: 'rgba(255,255,255,.8)',
+      cursor: 'pointer',
+      transition: '2s',
+      zIndex: 1000,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+  }//data for react modal
+  
+  }
+
   const backgroundImage = getImage(data.img);
 
   const productData = data.itemsDataJson
@@ -84,6 +116,21 @@ const ProductPage = ({ data, key }) => {
   const mainImage = productData.mainImage
 
   const photos = productData.photos
+
+  const gallery = []
+
+  photos.map((item, i) => (
+    gallery.push(
+      [
+        item.image.childImageSharp,
+        item.image.name,
+        i
+      ]
+    )
+  ))
+
+  console.log(photos)
+  console.log(gallery)
   return (
     <Layout alternativeLinks={alternativeLinks}>
       <Seo />
@@ -104,7 +151,8 @@ const ProductPage = ({ data, key }) => {
       <ModalContainer>
 
         <ModalGalleryBox>
-          <ProductModalGallery mainImage={mainImage} photos={photos} />
+        <ProductModalGallery styles={styles} mainImage={mainImage}/* styles={styles} currentImg={image} current={image} */ photos={gallery} index='1' />
+          {/* <ProductModalGallery mainImage={mainImage} photos={gallery} /> */}
         </ModalGalleryBox>
 
         <ModalInfoBox>

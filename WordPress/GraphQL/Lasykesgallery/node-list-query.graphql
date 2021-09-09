@@ -1,0 +1,60 @@
+query NODE_LIST_QUERY($first: Int!, $after: String) {
+  lasykesgalleries(first: $first, after: $after) {
+    nodes {
+      contentType {
+        node {
+          id
+        }
+      }
+      databaseId
+      date
+      dateGmt
+      desiredSlug
+      enclosure
+      guid
+      id
+      isContentNode
+      isTermNode
+      item1 {
+        multiBox {
+          content
+          img {
+            __typename
+            id
+          }
+          title
+          type
+        }
+      }
+      lastEditedBy {
+        node {
+          id
+        }
+      }
+      link
+      modified
+      modifiedGmt
+      nazwisko
+      sdfdff
+      slug
+      status
+      template {
+        templateName
+        __typename
+      }
+      title
+      uri
+      vwAttachedMedia(first: 100) {
+        nodes {
+          __typename
+          id
+        }
+      }
+      __typename
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}

@@ -1,0 +1,54 @@
+query PREVIEW_QUERY($id: ID!) {
+  lasykesgallery(id: $id, idType: ID, asPreview: true) {
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    enclosure
+    guid
+    id
+    isContentNode
+    isTermNode
+    item1 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    modified
+    modifiedGmt
+    nazwisko
+    sdfdff
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    title
+    uri
+    vwAttachedMedia(first: 100) {
+      nodes {
+        __typename
+        id
+      }
+    }
+    __typename
+  }
+}

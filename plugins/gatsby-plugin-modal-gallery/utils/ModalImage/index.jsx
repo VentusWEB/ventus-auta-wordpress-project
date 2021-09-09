@@ -20,6 +20,7 @@ export const ModalImage = ({ image, alt, styles }) => {
         <ModalContainer styles={styles}>
         <OpenIcon onClick={handleOpenModal} styles={styles} />
             <ModalBox
+
                 isOpen={showModal}
                 contentLabel="onRequestClose Example"
                 onRequestClose={handleCloseModal}

@@ -1,0 +1,102 @@
+query SINGLE_CONTENT_QUERY($id: ID!) {
+  page(id: $id) {
+    ancestors(first: 100) {
+      nodes {
+        id
+        __typename
+      }
+    }
+    author {
+      node {
+        id
+      }
+    }
+    authorDatabaseId
+    authorId
+    checkboxButtons {
+      checkboxOptions {
+        checked
+        value
+      }
+    }
+    wpChildren: children(first: 100) {
+      nodes {
+        id
+        __typename
+      }
+    }
+    commentCount
+    commentStatus
+    comments(first: 100) {
+      nodes {
+        id
+      }
+    }
+    content
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    eMailField
+    enclosure
+    featuredImage {
+      node {
+        __typename
+        id
+      }
+    }
+    featuredImageDatabaseId
+    featuredImageId
+    guid
+    id
+    isContentNode
+    isFrontPage
+    isPostsPage
+    isPrivacyPage
+    isRevision
+    isTermNode
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    menuOrder
+    modified
+    modifiedGmt
+    wpParent: parent {
+      node {
+        id
+        __typename
+      }
+    }
+    parentDatabaseId
+    parentId
+    radioButtons
+    saveHTML
+    slug
+    someDescription
+    status
+    template {
+      templateName
+      __typename
+    }
+    textField
+    title
+    uRLField
+    uri
+    videoUpload
+    vwAttachedMedia(first: 100) {
+      nodes {
+        __typename
+        id
+      }
+    }
+    __typename
+  }
+}

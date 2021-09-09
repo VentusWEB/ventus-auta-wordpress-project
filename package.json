@@ -30,6 +30,7 @@
 		"gatsby-plugin-yandex-metrika": "^2.5.0",
 		"gatsby-source-filesystem": "^3.7.0",
 		"gatsby-source-graphql": "^3.6.0",
+		"gatsby-source-wordpress": "^5.13.0",
 		"gatsby-transformer-json": "^3.6.0",
 		"gatsby-transformer-remark": "^4.4.0",
 		"gatsby-transformer-sharp": "^3.6.0",

@@ -109,6 +109,25 @@ module.exports = {
 				defer: true,
 			},
 		},
+		{
+			resolve: `gatsby-source-wordpress`,
+			options: {
+			  url: process.env.WPGRAPHQL_URL,
+			  verbose: true,
+			  develop: {
+				hardCacheMediaFiles: true,
+			  },
+			  debug: {
+				graphql: {
+				  writeQueriesToDisk: true,
+				},
+			  },
+			  html: {
+				fallbackImageMaxWidth: 800,
+			  },
+			},
+		  },
+		`gatsby-plugin-modal-gallery`,
 		"gatsby-plugin-offline",
 	],
 };

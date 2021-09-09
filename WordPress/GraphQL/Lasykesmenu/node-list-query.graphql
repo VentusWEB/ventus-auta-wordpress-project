@@ -1,0 +1,69 @@
+query NODE_LIST_QUERY($first: Int!, $after: String) {
+  lasykesmenus(first: $first, after: $after) {
+    nodes {
+      components
+      contentType {
+        node {
+          id
+        }
+      }
+      currency
+      databaseId
+      date
+      dateGmt
+      desiredSlug
+      enclosure
+      gallery {
+        galleryOptions {
+          image
+        }
+      }
+      guid
+      id
+      isContentNode
+      isTermNode
+      lastEditedBy {
+        node {
+          id
+        }
+      }
+      link
+      mainImage {
+        __typename
+        id
+      }
+      measure
+      menuCategory
+      modified
+      modifiedGmt
+      price
+      productName
+      properties {
+        checkboxOptions {
+          checked
+          value
+        }
+      }
+      quantity
+      slug
+      status
+      template {
+        templateName
+        __typename
+      }
+      title
+      uri
+      vwAttachedMedia(first: 100) {
+        nodes {
+          __typename
+          id
+        }
+      }
+      __typename
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
