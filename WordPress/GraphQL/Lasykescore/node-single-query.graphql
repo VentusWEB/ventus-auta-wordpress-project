@@ -193,12 +193,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     twitter
     uri
     url
-    vwAttachedMedia(first: 100) {
-      nodes {
-        __typename
-        id
-      }
-    }
     whatsappFooter {
       multiBox {
         content

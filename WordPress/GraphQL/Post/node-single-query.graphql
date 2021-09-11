@@ -84,12 +84,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     title
     toPing
     uri
-    vwAttachedMedia(first: 100) {
-      nodes {
-        __typename
-        id
-      }
-    }
     __typename
   }
 }

@@ -85,12 +85,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       title
       toPing
       uri
-      vwAttachedMedia(first: 100) {
-        nodes {
-          __typename
-          id
-        }
-      }
       __typename
     }
     pageInfo {

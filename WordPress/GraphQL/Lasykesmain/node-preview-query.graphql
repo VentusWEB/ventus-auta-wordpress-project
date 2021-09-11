@@ -186,12 +186,6 @@ query PREVIEW_QUERY($id: ID!) {
     title
     titleInfo
     uri
-    vwAttachedMedia(first: 100) {
-      nodes {
-        __typename
-        id
-      }
-    }
     whatsapp {
       multiBox {
         content

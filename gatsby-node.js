@@ -9,7 +9,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.createPages = async ({ actions: { createPage }, graphql }) => {
+/* exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const data = await graphql(`
     {
       allItemsDataJson {
@@ -31,8 +31,40 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   data.data.allItemsDataJson.edges.forEach(edge => {
     createPage({
-      path: `/oferta/${edge.node.slug}/`,
+      path: `/model/${edge.node.slug}/`,
       component: productTemplate,
+      context: {
+        slug: edge.node.slug,
+      },
+    })
+  })
+} */
+
+exports.createPages = async ({ actions: { createPage }, graphql }) => {
+  const data = await graphql(`
+    {
+        allWpVentusautaproduct {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+        
+    }
+  `)
+
+  if (data.errors) {
+    console.log("Error retrieving data", data.errors)
+    return
+  }
+
+  const singleProductTemplate = path.resolve("src/templates/ProductPage.js")
+
+  data.data.allWpVentusautaproduct.edges.forEach(edge => {
+    createPage({
+      path: `/oferta/${edge.node.slug}/`,
+      component: singleProductTemplate,
       context: {
         slug: edge.node.slug,
       },

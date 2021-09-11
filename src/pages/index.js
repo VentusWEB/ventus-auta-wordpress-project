@@ -7,9 +7,17 @@ import { Offer, About, ContactLocation } from "components/landing";
 import { getImage } from "gatsby-plugin-image"
 
 const Home = () => {
-	const { img, productData } = useStaticQuery(
+	const { img, productData, products } = useStaticQuery(
 		graphql`
 	query {
+		products: allWpVentusautaproduct {
+			edges {
+			  node {
+				slug
+			  }
+			}
+		  }
+
 	  img:  file(relativePath: { eq: "PageHeaders/homeBg.jpg" }) {
 		  childImageSharp {
 			gatsbyImageData(
@@ -45,6 +53,7 @@ const Home = () => {
 
 
 	const backgroundImage = getImage(img);
+	console.log(products)
 
 	return (
 		<Layout>

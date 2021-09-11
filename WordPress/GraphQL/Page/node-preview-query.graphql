@@ -91,12 +91,6 @@ query PREVIEW_QUERY($id: ID!) {
     uRLField
     uri
     videoUpload
-    vwAttachedMedia(first: 100) {
-      nodes {
-        __typename
-        id
-      }
-    }
     __typename
   }
 }

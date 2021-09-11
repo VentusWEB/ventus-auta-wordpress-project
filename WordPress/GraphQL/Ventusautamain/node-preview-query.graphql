@@ -1,0 +1,140 @@
+query PREVIEW_QUERY($id: ID!) {
+  ventusautamain(id: $id, idType: ID, asPreview: true) {
+    brandEmail
+    brandFullName
+    brandNip
+    brandPhone
+    brandRegon
+    buttonText
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    enclosure
+    features1 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    features2 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    features3 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    guid
+    htmlContent
+    id
+    infoText
+    isContentNode
+    isTermNode
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    locationInfo1 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    locationInfo2 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    mail {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    map {
+      __typename
+      id
+    }
+    modified
+    modifiedGmt
+    order
+    paragraphs
+    phone {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    sectionTitle
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    textHeader
+    title
+    titleInfo
+    uri
+    whatsapp {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    __typename
+  }
+}

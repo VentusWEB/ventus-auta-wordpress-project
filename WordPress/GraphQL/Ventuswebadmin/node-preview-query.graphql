@@ -65,12 +65,6 @@ query PREVIEW_QUERY($id: ID!) {
     }
     title
     uri
-    vwAttachedMedia(first: 100) {
-      nodes {
-        __typename
-        id
-      }
-    }
     __typename
   }
 }

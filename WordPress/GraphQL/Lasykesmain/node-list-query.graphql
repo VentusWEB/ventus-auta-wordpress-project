@@ -187,12 +187,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       title
       titleInfo
       uri
-      vwAttachedMedia(first: 100) {
-        nodes {
-          __typename
-          id
-        }
-      }
       whatsapp {
         multiBox {
           content
