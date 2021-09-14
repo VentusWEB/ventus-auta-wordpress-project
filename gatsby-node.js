@@ -9,36 +9,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-/* exports.createPages = async ({ actions: { createPage }, graphql }) => {
-  const data = await graphql(`
-    {
-      allItemsDataJson {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-    }
-  `)
 
-  if (data.errors) {
-    console.log("Error retrieving data", data.errors)
-    return
-  }
-
-  const productTemplate = path.resolve("src/templates/ProductPage.js")
-
-  data.data.allItemsDataJson.edges.forEach(edge => {
-    createPage({
-      path: `/model/${edge.node.slug}/`,
-      component: productTemplate,
-      context: {
-        slug: edge.node.slug,
-      },
-    })
-  })
-} */
 
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const data = await graphql(`

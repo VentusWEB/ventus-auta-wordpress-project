@@ -1,83 +1,228 @@
 import React from 'react';
+
+import uuid from 'react-uuid'
+
+import { GatsbyImage } from "gatsby-plugin-image"
 import { GridMainWrapper, ReverseBox, LocationContainer, MapLocation, AdressSection, AdressBox, LocationContentBox, ContactIconsBox, ToggleableBg, GridContactInfo, ContactSectionsBox, ContactSectionWrapper, ReverseWrapper } from './styles';
-import { SectionTitle, DefaultWrapper, PropCard } from 'components/common'
+import { SectionTitle, DefaultWrapper, PropCard, DefaultIcon } from 'components/common'
 
 
 import { contactItems } from "constans"
 
 import { ContentBox } from 'components/common'
+import { deviceType } from 'detect-it';
 
 
-export const ContactLocation = () => {
+export const ContactLocation = ({ LocationData, LocationAddress, ContactData, ContactItems, ContactBrandInfo }) => {
+
+
+    const icon = LocationData.map.localFile.childSvg
+
+    const img = LocationData.map.localFile.childImageSharp
+
+    const content = LocationData.paragraphs.fieldsList
+
+    const title1 = LocationData.textHeader
+
+    const title2 = ContactData.textHeader
+
+    const id1 = LocationData.sectionTitle.replace(" ", "-").toLowerCase()
+
+    const id2 = ContactData.sectionTitle.replace(" ", "-").toLowerCase()
+
+    const locationOrder = LocationData.order
+
+    const contactOrder = ContactData.order
 
     return (
-        <GridMainWrapper  >
+        <  >
 
-            <DefaultWrapper fluid id="location">
+            <DefaultWrapper fluid id={id1} css={`{ order: ${locationOrder}; }`}>
                 <SectionTitle>
-                    <h4>Lokalizacja</h4>
+                    <h4>{title1}</h4>
                 </SectionTitle>
                 <LocationContainer>
 
                     <LocationContentBox secondary>
-                        <MapLocation />
+                    {img ?
+                                        <MapLocation>
+                                            <GatsbyImage
+                                                alt={objectName}
+                                                image={img.gatsbyImageData}
+                                            />
+                                        </MapLocation>
+                                        :
+                                        icon ?
+                                            (<MapLocation dangerouslySetInnerHTML={{ __html: icon.content.data }} />) : null}
+
                         <AdressSection>
-                            <AdressBox>
-                                <h3>Kłodzko</h3>
-                                <p>Letnia 13/16</p>
-                                <p>57-300</p>
-                            </AdressBox>
-                            <AdressBox>
-                                <h3>Mrokocin</h3>
-                                <p>15</p>
-                                <p>57-220</p>
-                            </AdressBox>
+
+                        {Object.keys(LocationAddress).map(((keyName, i) => {
+
+                                const objects = LocationAddress[keyName].multiBox;
+
+                                const objectCities = objects.map((item, i) => {
+                                if (item['title'] == "miasto") {
+                                    return item
+                                }
+                                })//check for icon option just to be safe
+
+                                const objectAddresses = objects.map((item, i) => {
+                                if (item['title'] == "ulica") {
+                                    return item
+                                }
+                                })
+                                //check for content option just to be safe
+
+                                const objectZipCodes = objects.map((item, i) => {
+                                    if (item['title'] == "kod pocztowy") {
+                                        return item
+                                    }
+                                    })
+                                    //check for content option just to be safe
+
+                                const objectCity = objectCities
+                                .filter(item => item !== undefined)[0]['content']
+
+                                const objectAddress = objectAddresses
+                                .filter(item => item !== undefined)[0]['content']
+
+                                const objectZipCode = objectZipCodes
+                                .filter(item => item !== undefined)[0]['content']
+                                
+                                return (
+                                <>
+                                                            <AdressBox>
+                                                                <h3>{objectCity}</h3>
+                                                                <p>{objectAddress}</p>
+                                                                <p>{objectZipCode}</p>
+                                                            </AdressBox>
+                                </>
+                                )
+
+                                }))
+                                }
                         </AdressSection>
 
 
                     </LocationContentBox>
                     <ContentBox secondary >
-                        <p>Główna siedziba przedsiębiorstwa usytuowana jest w mieście Kłodzko położonym na Dolnym śląsku.</p>
-                        <p>Większość procesów przedsiębiorstwa odbywa się natomiast w miejscowości Mrokocin usytuowanej przy granicy województwa opolskiego oraz dolnośląskiego.</p>
+                        {
+                            content.map(item => (<p>{item.paragraph}</p>))
+                        }
 
                     </ContentBox>
                 </LocationContainer>
 
             </DefaultWrapper>
 
-            <ReverseBox>
-                <SectionTitle secondary css={`text-align: left;`} id="contact">
-                    <h4>Kontakt</h4>
+            <ReverseBox css={`{ order: ${contactOrder}; }`}>
+                <SectionTitle secondary css={`text-align: left;`} id={id2}>
+                    <h4>{title2}</h4>
                 </SectionTitle>
-                <ContactSectionWrapper>
+                <ContactSectionWrapper >
                     <ReverseWrapper fluid>
                         <ContactIconsBox>
-                            {
-                                contactItems.map((item, i) => (
-                                    <a href={item.href} title={item.alt}><PropCard secondary content={item.content}>
-                                        {item.icon}
-                                    </PropCard>
-                                    </a>
-                                ))
-                            }
+                        {Object.keys(ContactItems).map(((keyName, i) => {
+
+                                    const socials = ContactItems[keyName].multiBox;
+                                    console.log(socials)
+                                    const socialIcons = socials.map((item, i) => {
+                                    if (item['type'] == "icon") {
+                                        return item
+                                    }
+                                    })//check for icon option just to be safe
+
+                                    const socialNames = socials.map((item, i) => {
+                                    if (item['type'] == "content") {
+                                        return item
+                                    }
+                                    })
+                                    //check for content option just to be safe
+
+                                    const socialHrefs = socials.map((item, i) => {
+                                    if (item['type'] == "href") {
+                                        return item
+                                    }
+                                    })
+                                    //check for content option just to be safe
+
+                                    const socialIcon = socialIcons
+                                    .filter(item => item !== undefined)[0]
+                                    console.log(socialIcon)
+                                    const socialName = socialNames
+                                    .filter(item => item !== undefined)[0]['content']
+
+                                    const socialHref = socialHrefs
+                                    .filter(item => item !== undefined)[0]['content']
+                                    
+                                    const icon = socialIcon.img?.localFile.childSvg
+
+                                    const img = socialIcon.img?.localFile.childImageSharp
+
+                                    const alt = socialIcon.img?.altText
+
+                                    return (
+                                    <>
+                                     <a href={socialHref} title={socialName}><PropCard secondary content={socialName}>   {img
+                                        ?
+                                            <GatsbyImage
+                                            alt={socialName}
+                                            image={img.gatsbyImageData}
+                                            />
+
+                                        :
+
+                                        icon
+
+                                            ?
+
+                                            <deviceType
+                                            key={uuid()}
+                                            href={socialHref}
+                                            dangerouslySetInnerHTML={{ __html: icon.content.data }}
+                                            />
+
+                                            :
+
+                                            <DefaultIcon
+                                                className={"svg-icon"}
+                                                label={keyName}
+                                                aria-hidden="true"
+                                                role="img"
+                                                focusable="false"
+                                            />
+                                        }</PropCard></a>
+                                    </>
+                                    )
+
+                                    }))
+                                    }
+
                         </ContactIconsBox>
                         <ContactSectionsBox>
                             <ToggleableBg />
                             <GridContactInfo>
-                                <div>
-                                    <p>Nazwa pełna:</p>
-                                    <h5>Ventus Trade Patrycja Skóra</h5>
-                                    <p>NIP:</p>
-                                    <h5>8871716875</h5>
-                                    <p>Regon:</p>
-                                    <h5>020805395</h5>
-                                </div>
-                                <div>
-                                    <p>Telefon:</p>
-                                    <h5>571 901 144</h5>
-                                    <p>Mail:</p>
-                                    <h5>auta@ventus-trade.pl</h5>
-                                </div>
+
+                            {Object.keys(ContactBrandInfo).map(((keyName, i) => {
+
+                                    const objects = ContactBrandInfo[keyName].multiBox;
+
+
+                                    const BrandInfo = objects.map(item => (
+                                        <>
+                                        <p>{item.title}</p>
+                                        <h5>{item.content}</h5>
+                                        </>
+                                    ))
+
+                                    return(
+                                        <div>{BrandInfo}</div>
+                                    )
+
+                                    }))
+                                    }
+                    
                             </GridContactInfo>
 
                         </ContactSectionsBox>
@@ -87,7 +232,7 @@ export const ContactLocation = () => {
 
                 </ContactSectionWrapper>
             </ReverseBox>
-        </GridMainWrapper>
+        </>
 
 
     );

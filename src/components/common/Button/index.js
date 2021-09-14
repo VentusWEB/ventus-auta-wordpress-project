@@ -15,6 +15,7 @@ export const Button = styled.button`
   -ms-user-select: none;
   user-select: none;
   color: ${({ theme }) => theme.colors.third}; 
+
   
 
   background: ${({ theme }) => theme.colors.secondary}; 
@@ -36,6 +37,13 @@ export const Button = styled.button`
   &:disabled {
     background: gray;
   }
+
+  ${({ small, theme }) =>
+  small &&
+  `
+  padding: 0.3rem 1rem;
+  font-size: ${ theme.fontSize.s};
+`}
 
   ${({ secondary, theme }) =>
     secondary &&
@@ -78,4 +86,19 @@ export const Button = styled.button`
     border: 4px solid ${theme.colors.primary};
     border-bottom: 8px solid  ${theme.colors.secondary};
 	`}
+`;
+
+export const NavButton = styled(Button)`
+border: none;
+background: transparent;
+cursor: pointer;
+text-transform: uppercase;
+color: ${({ theme }) => theme.colors.secondaryLight};
+font-size: ${({ theme }) => theme.fontSize.navButtons};
+
+.current {
+  color: red;
+}
+
+
 `;

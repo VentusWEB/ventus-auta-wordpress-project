@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import { Layout } from "components/theme"
+import { Layout, CustomedNav } from "components/theme"
 import { Seo, PropCard, Button, SectionTitle, HeroHeader } from "components/common";
 import { getImage } from 'gatsby-plugin-image'
 
@@ -24,7 +24,90 @@ import { ReactComponent as EngineIcon } from 'assets/product-props/engine.svg'
 
 
 export const query = graphql`
-  query($slug: String!) {
+query($slug: String!) {
+    wpVentusautaproduct(slug: { eq: $slug }) {
+    courseValue
+    description
+    vin
+    type
+    slug
+    price
+    grossPrice
+    gearbox
+    generation
+    power
+    oil
+    model
+    productName
+    productFullName
+    year
+    mainImage {
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+    secondImage {
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+    kind
+    invoice {
+      checkboxOptions {
+        checked
+        value
+      }
+    }
+    properties {
+      checkboxOptions {
+        checked
+        value
+      }
+    }
+    imported {
+      checkboxOptions {
+        checked
+        value
+      }
+    }
+    invoice {
+      checkboxOptions {
+        checked
+      }
+    }
+    loanable {
+      checkboxOptions {
+        checked
+      }
+    }
+    sold {
+      checkboxOptions {
+        checked
+      }
+    }
+    images: gallery {
+      imagesList {
+        image {
+          localFile {
+            name
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
+    }
+    drive
+    course
+    capacity
+    brand
+  } 
+
+
     itemsDataJson(slug: { eq: $slug }) {
       name
       description
@@ -74,7 +157,51 @@ export const query = graphql`
 			}
 		  }
 
-  }
+      SeoData: wpLasykescore(slug: {eq: "seo-content"}) {
+        author
+        city
+        country
+        dir
+        email
+        facebook
+        instagram
+        logoUrl
+        legalName
+        lang
+        phone
+        region
+        siteDescription
+        siteBrand
+        thumbnail {
+          altText
+          localFile {
+            ...FileFragmentSvg
+            ...FileFragmentImg
+          }
+        }
+        siteTitle
+        twitter
+        title
+        github
+        defaultTitle
+        defaultDescription
+        foundingDate
+        zipCode
+        url
+      }
+
+      NavProducts:  allWpVentusautaproduct {
+        edges{
+        node {
+              productName
+              databaseId
+              slug
+            }
+          }
+      }
+
+  
+}
 `
 
 const ProductPage = ({ data, key }) => {
@@ -113,27 +240,76 @@ const ProductPage = ({ data, key }) => {
 
   const productData = data.itemsDataJson
 
-  const mainImage = productData.mainImage
+  const SeoContent = data.SeoData
 
-  const photos = productData.photos
+  const singleProductData = data.wpVentusautaproduct
+
+/*   const mainImage = mainImage */
+
+  const mainImage = singleProductData.mainImage.localFile
+
+  const images = singleProductData.images.imagesList
 
   const gallery = []
 
-  photos.map((item, i) => (
+  images.map((item, i) => (
     gallery.push(
       [
-        item.image.childImageSharp,
-        item.image.name,
+        item.image.localFile.childImageSharp,
+        item.image.localFile.name,
         i
       ]
     )
   ))
 
-  console.log(photos)
-  console.log(gallery)
+
+  const NavProducts = data.NavProducts
+
+  let menuArray = [];
+
+	menuArray = NavProducts.edges.map(function (item) {
+  
+	  return {
+		path: 'oferta/'+item.node.slug,
+		label: item.node.productName,
+		order: item.node.databaseId
+	  };
+	});
+
+  const {
+    drive,
+    sold,
+    properties,
+    loanable,
+    imported,
+    course,
+    invoice,
+    gearbox,
+    capacity,
+    brand,
+    courseValue,
+    description,
+    kind,
+    vin,
+    grossPrice,
+    type,
+    slug,
+    price,
+    power,
+    generation,
+    oil,
+    model,
+    productName,
+    productFullName,
+    year
+  } = singleProductData
+
+/*   const checkValue = checkboxOptions.check */
+ 
   return (
     <Layout alternativeLinks={alternativeLinks}>
-      <Seo />
+      <Seo SeoData={SeoContent} />
+      <CustomedNav scroll={false} menuItems={menuArray} />
       <HeroHeader small
         bgImage={backgroundImage}
         headerBg="rgba(0,0,0,0.5)"
@@ -159,48 +335,48 @@ const ProductPage = ({ data, key }) => {
           <GridBoxDetails>
 
             <ParametersBox >
-              <h1>{productData.name}</h1>
+              <h1>{productName}</h1>
               <SectionTitle fifth ><h4>Parametry</h4></SectionTitle>
-              <PropCard content={productData.price + " pln"}>
+              <PropCard content={price + " pln"}>
                 <PriceIcon />
               </PropCard>
 
-              <PropCard content={productData.invoice ? "tak" : "nie"}>
+              <PropCard content={invoice.checkboxOptions.check ? "tak" : "nie"}>
                 <VatIcon />
               </PropCard>
 
-              <PropCard content={productData.petrol}>
+              <PropCard content={oil}>
                 <PetrolIcon />
               </PropCard>
 
-              <PropCard content={productData.rgb ? productData.course + " rbg" : productData.course + " km"}>
+              <PropCard content={courseValue}>
                 <RoadIcon />
               </PropCard>
 
-              <PropCard content={productData.power + " km"}>
+              <PropCard content={power + " km"}>
                 <HorseIcon />
               </PropCard>
 
-              <PropCard content={productData.capacity + " cm3"}>
+              <PropCard content={capacity + " cm3"}>
                 <EngineIcon />
               </PropCard>
 
-              <PropCard content={productData.gearbox === 'manual' ? 'manual' : 'automat'}>
-                {productData.gearbox === 'manual' ? <ManualIcon /> : <AutomatIcon />}
+              <PropCard content={gearbox === 'manual' ? 'manual' : 'automat'}>
+                {gearbox === 'manual' ? <ManualIcon /> : <AutomatIcon />}
               </PropCard>
 
             </ParametersBox>
 
             <ParametersBox >
               <SectionTitle fifth><h4>Opis</h4></SectionTitle>
-              <p>{productData.description}</p>
+              <p>{description}</p>
             </ParametersBox>
             {
-              productData.vin !== "" && (
+              vin !== '0' && (
                 <>
                   <VinBox>
                     <SectionTitle six><h4>VIN</h4></SectionTitle>
-                    <span>{productData.vin}</span>
+                    <span>{vin}</span>
                   </VinBox>
                 </>
               )
@@ -210,28 +386,29 @@ const ProductPage = ({ data, key }) => {
           <GridInfoBox>
             <GridContentBox >
               <SectionTitle fifth><h4>Informacje</h4></SectionTitle>
-              <p><span>Marka:</span>{productData.brand}</p>
-              <p><span>Model:</span>{productData.model}</p>
-              <p><span>Rok:</span>{productData.year}</p>
-              {productData.grossPrice && (<p><span>Cena brutto:</span>{productData.grossPrice}</p>)}
-              {productData.price && (<p><span>Cena netto:</span>{productData.price}</p>)}
-              {productData.generation && (<p><span>Generacja:</span>{productData.generation}</p>)}
-              {productData.drive && (<p><span>Napęd:</span>{productData.drive}</p>)}
+              <p><span>Marka:</span>{brand}</p>
+              <p><span>Model:</span>{model}</p>
+              <p><span>Rok:</span>{year}</p>
+              {grossPrice !== '0' && (<p><span>Cena brutto:</span>{grossPrice}</p>)}
+              {price !== '0' && (<p><span>Cena netto:</span>{price}</p>)}
+              {generation !== '0' && (<p><span>Generacja:</span>{generation}</p>)}
+              {drive !== '0' && (<p><span>Napęd:</span>{drive}</p>)}
 
 
 
             </GridContentBox>
             <GridContentBox secondary>
-              {productData.imported && (<p><span>Importowany</span></p>)}
-              {productData.loanable && (<p><span>Możliwość wynajmu</span></p>)}
+              {imported.checkboxOptions.check && (<p><span>Importowany</span></p>)}
+              {loanable.checkboxOptions.check && (<p><span>Możliwość wynajmu</span></p>)}
             </GridContentBox>
 
 
 
             <GridContentBox >
               <SectionTitle fifth><h4>Wyposażenie</h4></SectionTitle>
-              {productData.extras.map((item, i) => (
-                <li i={i}>✓ {item}</li>
+              {properties.checkboxOptions.map((item, i) => (
+                item.checked && 
+                (<li i={i}>✓ {item.value}</li>)
               ))}
 
             </GridContentBox>

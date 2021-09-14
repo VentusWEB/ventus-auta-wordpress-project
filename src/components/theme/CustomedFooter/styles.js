@@ -75,10 +75,10 @@ width: 95%;
 margin: auto;
 padding: 0.5em 0;
 
-@media (min-width: ${({ theme }) => theme.device.m}){
+/* @media (min-width: ${({ theme }) => theme.device.m}){
   font-size: ${({ theme }) => theme.fontSize.xl};
   flex-direction: row;
-}
+} */
 `
 
 export const FooterWrapper = styled.footer`
@@ -95,7 +95,7 @@ export const FooterIconsBox = styled.div`
 `
 export const FooterIcon = styled.a`
 color: ${({ theme }) => theme.colors.footerIcon}; 
-font-size: ${({ theme }) => theme.fontSize.xl}; 
+font-size: ${({ theme }) => theme.fontSize.m}; 
 transition: ${({ theme }) => theme.transitions.transDefault}; 
 margin: 10px;
 display: flex;

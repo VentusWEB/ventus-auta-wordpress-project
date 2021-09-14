@@ -2,6 +2,28 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
   ventusautacore(id: $id) {
     author
     background
+    button1 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    button2 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
     city
     contentType {
       node {
@@ -44,10 +66,7 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     }
     foundingDate
     github
-    guid
-    id
-    instagram
-    instagramFooter {
+    googleMyBusinessFooter {
       multiBox {
         content
         img {
@@ -58,6 +77,9 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
         type
       }
     }
+    guid
+    id
+    instagram
     isContentNode
     isTermNode
     lang
@@ -69,7 +91,7 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     legalName
     link
     logoUrl
-    messengerFooter {
+    mailFooter {
       multiBox {
         content
         img {
@@ -105,12 +127,17 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     secondaryLight
     siteBrand
     siteDescription
+    siteHeader {
+      __typename
+      id
+    }
     siteLogo {
       __typename
       id
     }
     siteSlogan
-    siteTtitle
+    siteSubTitle
+    siteTitle
     slug
     status
     template {

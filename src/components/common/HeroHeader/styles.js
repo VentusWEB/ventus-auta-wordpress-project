@@ -28,6 +28,11 @@ ${({ small }) =>
     z-index: 1;
 }
 
+.svg-bg {
+    height: 100%;
+    width: 100%;
+}
+
 `
 
 export const HeroHeaderText = styled.div`

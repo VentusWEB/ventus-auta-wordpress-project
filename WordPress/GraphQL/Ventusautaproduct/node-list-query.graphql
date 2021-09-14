@@ -23,6 +23,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       description
       desiredSlug
       drive
+      editor
       enclosure
       features1 {
         multiBox {
@@ -65,6 +66,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           }
         }
       }
+      gearbox
       generation
       grossPrice
       guid
@@ -86,7 +88,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       isContentNode
       isTermNode
       kind
-      lang
       lastEditedBy {
         node {
           id
@@ -145,6 +146,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       modified
       modifiedGmt
       oil
+      petrol
       phone {
         multiBox {
           content
@@ -160,6 +162,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       price
       productFullName
       productName
+      productSlug
       properties {
         checkboxOptions {
           checked

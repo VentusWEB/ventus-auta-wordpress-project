@@ -2,10 +2,33 @@ query PREVIEW_QUERY($id: ID!) {
   ventusautamain(id: $id, idType: ID, asPreview: true) {
     brandEmail
     brandFullName
+    brandInfo1 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
+    brandInfo2 {
+      multiBox {
+        content
+        img {
+          __typename
+          id
+        }
+        title
+        type
+      }
+    }
     brandNip
     brandPhone
     brandRegon
     buttonText
+    contentInfo
     contentType {
       node {
         id
@@ -50,9 +73,11 @@ query PREVIEW_QUERY($id: ID!) {
       }
     }
     guid
-    htmlContent
+    headerImage {
+      __typename
+      id
+    }
     id
-    infoText
     isContentNode
     isTermNode
     lastEditedBy {
@@ -101,7 +126,11 @@ query PREVIEW_QUERY($id: ID!) {
     modified
     modifiedGmt
     order
-    paragraphs
+    paragraphs {
+      fieldsList {
+        paragraph
+      }
+    }
     phone {
       multiBox {
         content
@@ -113,6 +142,8 @@ query PREVIEW_QUERY($id: ID!) {
         type
       }
     }
+    policyContent
+    policyTitle
     sectionTitle
     slug
     status
@@ -121,6 +152,7 @@ query PREVIEW_QUERY($id: ID!) {
       __typename
     }
     textHeader
+    textSubheader
     title
     titleInfo
     uri

@@ -22,6 +22,7 @@ query PREVIEW_QUERY($id: ID!) {
     description
     desiredSlug
     drive
+    editor
     enclosure
     features1 {
       multiBox {
@@ -64,6 +65,7 @@ query PREVIEW_QUERY($id: ID!) {
         }
       }
     }
+    gearbox
     generation
     grossPrice
     guid
@@ -85,7 +87,6 @@ query PREVIEW_QUERY($id: ID!) {
     isContentNode
     isTermNode
     kind
-    lang
     lastEditedBy {
       node {
         id
@@ -144,6 +145,7 @@ query PREVIEW_QUERY($id: ID!) {
     modified
     modifiedGmt
     oil
+    petrol
     phone {
       multiBox {
         content
@@ -159,6 +161,7 @@ query PREVIEW_QUERY($id: ID!) {
     price
     productFullName
     productName
+    productSlug
     properties {
       checkboxOptions {
         checked

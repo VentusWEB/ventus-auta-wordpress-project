@@ -3,6 +3,28 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
     nodes {
       author
       background
+      button1 {
+        multiBox {
+          content
+          img {
+            __typename
+            id
+          }
+          title
+          type
+        }
+      }
+      button2 {
+        multiBox {
+          content
+          img {
+            __typename
+            id
+          }
+          title
+          type
+        }
+      }
       city
       contentType {
         node {
@@ -45,10 +67,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       }
       foundingDate
       github
-      guid
-      id
-      instagram
-      instagramFooter {
+      googleMyBusinessFooter {
         multiBox {
           content
           img {
@@ -59,6 +78,9 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           type
         }
       }
+      guid
+      id
+      instagram
       isContentNode
       isTermNode
       lang
@@ -70,7 +92,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       legalName
       link
       logoUrl
-      messengerFooter {
+      mailFooter {
         multiBox {
           content
           img {
@@ -106,12 +128,17 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       secondaryLight
       siteBrand
       siteDescription
+      siteHeader {
+        __typename
+        id
+      }
       siteLogo {
         __typename
         id
       }
       siteSlogan
-      siteTtitle
+      siteSubTitle
+      siteTitle
       slug
       status
       template {

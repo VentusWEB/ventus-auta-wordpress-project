@@ -8,12 +8,12 @@ export const contactNav = [
     {
         href: "tel:571-901-144",
         content: "zadzwoń",
-        style: null,
+        style: 'secondaryBlack',
     },
     {
         href: "whatsapp://send?phone=48571901144",
         content: "napisz",
-        style: true,
+        style: 'secondaryBlack',
     }
 ]
 

@@ -2,25 +2,231 @@ import styled from 'styled-components'
 import { ReactComponent as MobileLogo } from "assets/svgs/vt-logo-full.svg"
 import { Link } from "gatsby"
 
+import Scrollspy from "react-scrollspy"
+
+
+/* Combined */
+
+export const TopHeaderBox = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+`
+export const TogglerBurgerSection= styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 10px;
+order: 1;
+`
+export const DesktopToggler = styled.div`
+display: none;
+@media (min-width: ${({ theme }) => theme.device.l}) {
+display: flex;
+flex-direction: row;
+align-items: center;
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 10px;
+}
+`
+
+export const TogglerBurgerBox = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 10px;
+@media (min-width: ${({ theme }) => theme.device.l}) {
+  display: none;
+}
+`
+
+export const ScrollLinkUl = styled(Scrollspy)`
+
+/* .current::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  height: 10px;
+  transform: translate(-50%, 2rem);
+
+  background: ${({ theme }) => theme.colors.primaryLight}; 
+}
+ */
+.current button{
+  color: ${({ theme }) => theme.colors.primaryLight} !important;
+  transition: ${({ theme }) => theme.transitions.primary}; 
+
+}
+
+li::after{
+  width: 100%;
+}
+
+
+@media (min-width: ${({ theme }) => theme.device.xl}){
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  grid-gap: 1rem;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  
+  }
+ 
+}
+
+`
+
+export const MenuIconContainer = styled.div`
+
+display: flex;
+justify-content: flex-end;
+align-items: center;
+@media (min-width: ${({ theme }) => theme.device.l}) {
+  display: none;
+}
+`
+
+export const MenuIcon = styled.button`
+cursor: pointer;
+background: transparent;
+border: none;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+height: 2rem;
+margin-left: 20px;
+/*   margin-right: 20px;
+margin-top: 20px; */
+outline: thin-dotted;
+z-index: 11;
+
+&:focus{
+  outline: none;
+}
+
+&:active{
+  outline: none;
+}
+
+div {
+  width: 2rem;
+  height: 0.25rem;
+  background: ${({ menuOpen, theme }) => (menuOpen ? theme.colors.primary : theme.colors.secondaryLight)};
+  border-radius: 10px;
+  transform-origin: 1px;
+  transition: opacity 300ms, transform 300ms;
+
+  :first-child {
+    transform: ${({ menuOpen }) =>
+  menuOpen ? "rotate(45deg)" : "rotate(0)"};
+  }
+
+  :nth-child(2) {
+    opacity: ${({ menuOpen }) => (menuOpen ? "0" : "1")};
+    transform: ${({ menuOpen }) =>
+  menuOpen ? "translateX(-20px)" : "translateX(0)"};
+  }
+
+  :nth-child(3) {
+    transform: ${({ menuOpen }) =>
+  menuOpen ? "rotate(-45deg)" : "rotate(0)"};
+  }
+}
+`
+
 
 /* Destkop */
 
 export const StyledHeader = styled.header`
-display: none;
+@media (max-width: ${({ theme }) => theme.device.l}) {
+flex-direction: column;
+justify-content: center;
+align-items: center;
+display: flex;
+background: ${({ theme }) => theme.colors.third};
+position: absolute;
+z-index: 1000;
+top: 0;
+right: 0;
+/* height: ${({ menuOpen, height, items, boxHeight }) => ( 1*boxHeight+'px')}; */
+height: 70px;
+width: calc(100% - 20px);
+padding: 0 10px;
+transition: 300ms;
+/* height: ${({ menuOpen, height, items, boxHeight }) => (menuOpen ? boxHeight+(items+1)*height+'px': 1*height+'px')}; */
+height: ${({ menuOpen, height, items, boxHeight }) => (menuOpen ? 70+items*height+'px': '70px')};
+position: fixed;
+
+ul {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  li {
+    list-style: none;
+
+    a {
+
+      width: 100vw;
+      text-align: center;
+
+      display: block;
+      text-decoration: none;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      color: ${({ theme }) => theme.colors.primary};
+      font-weight: 700;
+      text-transform: capitalize;
+      cursor: pointer;
+      transition: ${({ theme }) => theme.transitions.primary};
+  
+      &:hover {
+        background: ${({ theme }) => theme.colors.secondaryLight};
+        color: ${({ theme }) => theme.colors.primaryLight};
+        padding: 0.5rem 1rem 0.5rem 1.3rem;
+      }
+    }
+
+    
+  }
+} 
+}
 @media (min-width: ${({ theme }) => theme.device.l}) {
   display: flex;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 10;
-/*   padding: 0.5rem; */
+  width: calc(100% - 6rem);
+  padding: 0 3rem;
   transition: background 300ms;
-  height: 5vh;
+  height: 7vh;
   background: ${({ theme }) => theme.colors.third};
  /*  background: ${({ background, theme }) => (background ? (theme.colors.primary) : "linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 10%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.9) 60%, rgba(0,0,0,1) 100%);")}; */
 
 ul {
   display: flex;
+  flex-direction: row;
   align-items: center;
   width: 100%;
   justify-content: space-around;
@@ -52,6 +258,25 @@ align-items: center;
 grid-gap: 10px;
 text-transform: capitalize;
 color: ${({ theme }) => theme.colors.secondary};
+position: relative;
+
+
+
+h3 {
+  margin: 0;
+  line-height: 0;
+}
+
+
+img, svg, div {
+  height: 8vh;
+  padding: 5px 0;
+  @media (min-width: ${({ theme }) => theme.device.l}) {
+    transform: translate(0px, 50%);
+  }
+
+
+}
 `
 
 export const StyledMobileLogo = styled(MobileLogo)`

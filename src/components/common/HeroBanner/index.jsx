@@ -7,14 +7,14 @@ import { Button } from "components/common"
 import { HeroBannerBox } from './styles'
 
 
-export const HeroBanner = ({ buttonOne, buttonTwo, text, subText }) => {
+export const HeroBanner = ({ titleInfo, contentInfo, buttonText}) => {
 
     return (
         <>
             <HeroBannerBox>
-                <h3>{text}wybrana strona nie istnieje</h3>
-                <span>{subText}zapraszamy do naszej strony głównej</span>
-                <Link to="/"><Button>strona główna</Button></Link>
+                <h3>{titleInfo ? titleInfo : 'wybrana strona nie istnieje' }</h3>
+                <span>{contentInfo ? contentInfo : 'zapraszamy do naszej strony głównej' }</span>
+                <Link to="/" ><Button>{buttonText ? buttonText : 'strona główna'}</Button></Link>
             </HeroBannerBox>
         </>
 

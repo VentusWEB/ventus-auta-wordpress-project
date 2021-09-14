@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+/* import React, { useState, useEffect, useContext } from 'react';
 import { ControlersBox, Controler, ModalBox, CounterBox, ModalBtn } from './styles';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-/* Modal */
+ 
 import { ModalImage } from "interactions"
 
 export const ProductModalGallery = ({ photos }) => {
@@ -54,7 +54,7 @@ export const ProductModalGallery = ({ photos }) => {
         window.addEventListener('keyup', handleKeyUp, false)
         return () => window.removeEventListener('keyup', handleKeyUp, false)
 
-    })
+    }, [])
 
     useEffect(() => {
     }, [photo])
@@ -105,3 +105,4 @@ export const ProductModalGallery = ({ photos }) => {
         </ModalBox>
     );
 };
+ */

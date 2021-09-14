@@ -163,7 +163,11 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     order
-    paragraphs
+    paragraphs {
+      fieldsList {
+        paragraph
+      }
+    }
     phone {
       multiBox {
         content

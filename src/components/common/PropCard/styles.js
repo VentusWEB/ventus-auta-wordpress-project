@@ -76,11 +76,16 @@ export const PropCardBox = styled.div`
         fill:  ${({ theme }) => theme.colors.secondary};
         background:  ${({ theme }) => theme.colors.third};
 
-        svg{
-          width: 80%;
-          max-height: 80%;
+        div {
+          display: flex;
+          svg{
+            width: 80%;
+            max-width: 50%;
+            max-height: 80%;
+            margin: auto;
+          }
+  
         }
-
         ${({ secondary, theme }) =>
     secondary &&
     `

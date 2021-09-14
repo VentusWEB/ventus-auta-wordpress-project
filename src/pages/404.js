@@ -2,39 +2,92 @@ import React from "react";
 import { Layout } from "components/theme"
 import { Seo, HeroHeader, HeroBanner } from "components/common";
 import { graphql, useStaticQuery } from "gatsby"
+import { CustomedNav } from 'components/theme'
 
 import { getImage } from "gatsby-plugin-image"
 
 const NotFound = () => {
-	const { img } = useStaticQuery(
+	const { SeoData, ErrorData } = useStaticQuery(
 		graphql`
 	query {
-	  img:  file(relativePath: { eq: "PageHeaders/homeBg.jpg" }) {
-		  childImageSharp {
-			gatsbyImageData(
-				width: 1200, 
-				quality: 60, 
-				webpOptions: {quality: 75})
-			}
-		  }
+
+		SeoData: wpLasykescore(slug: {eq: "seo-content"}) {
+            author
+            city
+            country
+            dir
+            email
+            facebook
+            instagram
+            logoUrl
+            legalName
+            lang
+            phone
+            region
+            siteDescription
+            siteBrand
+            thumbnail {
+              altText
+              localFile {
+                ...FileFragmentSvg
+                ...FileFragmentImg
+              }
+            }
+            siteTitle
+            twitter
+            title
+            github
+            defaultTitle
+            defaultDescription
+            foundingDate
+            zipCode
+            url
+          }
+
+         ErrorData: wpVentusautamain(slug: {eq: "error-external-page"}) {
+			titleInfo
+			contentInfo
+			buttonText
+            headerImage {
+                localFile {
+					childImageSharp {
+					  gatsbyImageData
+					}
+					childSvg {
+					  content {
+						data
+					  }
+					}
+				  }
+            }
+          }
+
 	}
 	`
 	);
 
-	const backgroundImage = getImage(img);
+	const { titleInfo, contentInfo, buttonText, headerImage } = ErrorData
+
+	
+	const icon = headerImage?.localFile.childSvg
+
+	const img = headerImage?.localFile.childImageSharp
+
 
 	return (
 
 		<Layout>
-			<Seo title="strona niedostępna" location="/404" />
+			<Seo title="strona niedostępna" location="/404" SeoData={SeoData}/>
+			<CustomedNav />
 			<HeroHeader
-				small
-				bgImage={backgroundImage}
-				backgroundImage={img}
-				HeroBrandName="Ventus Trade"
-				HeroSubName="pojazdy & urządzenia"
+                bgImage={img}
+                bgIcon={icon}
 			>
-				<HeroBanner>
+				<HeroBanner
+				titleInfo={titleInfo}
+				contentInfo={contentInfo}
+				buttonText={buttonText}
+				>
 
 				</HeroBanner>
 			</HeroHeader>

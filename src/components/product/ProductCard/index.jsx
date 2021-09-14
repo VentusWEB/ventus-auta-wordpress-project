@@ -50,15 +50,15 @@ export const ProductCard = ({ children, bgImage, product, i }) => {
                             <PriceIcon />
                         </PropCard>
 
-                        <PropCard content={product.invoice ? "tak" : "nie"}>
+                        <PropCard content={product.invoice.checkboxOptions.cheked ? "tak" : "nie"}>
                             <VatIcon />
                         </PropCard>
 
-                        <PropCard content={product.petrol}>
+                        <PropCard content={product.oil}>
                             <PetrolIcon />
                         </PropCard>
 
-                        <PropCard content={product.rgb ? product.course + " rgb" : product.course + " km"}>
+                        <PropCard content={product.courseValue}>
                             <RoadIcon />
                         </PropCard>
                     </ProductCardIconsBox>
@@ -70,13 +70,13 @@ export const ProductCard = ({ children, bgImage, product, i }) => {
                         left: (even ? "0" : "")
                     }}
                 >
-                    <ProductImg image={cardImage} alt={product.name} />
+                    <ProductImg image={cardImage} alt={product.productName} />
                     <SectionTitle
                         style={{
                             textAlign: (even ? "right" : "left"),
                         }}
                         productName>
-                        <h4>{product.name}</h4>
+                        <h4>{product.productName}</h4>
                     </SectionTitle>
 
 

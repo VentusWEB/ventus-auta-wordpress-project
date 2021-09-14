@@ -179,10 +179,10 @@ const ProductPage = ({ data, key }) => {
 
 
   console.log(images)
-
+  console.log('images')
   const gallery = []
 
-  photos.map((item, i) => (
+  images.map((item, i) => (
     gallery.push(
       [
         item.image.childImageSharp,
@@ -191,9 +191,7 @@ const ProductPage = ({ data, key }) => {
       ]
     )
   ))
-
-  console.log(photos)
-  console.log(gallery)
+ 
   return (
     <Layout alternativeLinks={alternativeLinks}>
       <Seo />

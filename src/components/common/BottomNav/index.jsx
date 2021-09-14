@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import uuid from 'react-uuid'
+
 import { Transition, StyledBottomNav, ButtonsBox } from "./styles"
 
 import { Button } from "components/common"
@@ -34,15 +36,55 @@ export const BottomNav = ({ hrefOne, hrefOneName, hrefTwo, hrefTwoName, contactD
         <Transition>
             <StyledBottomNav className={show ? "active" : "hidden"}>
                 <ButtonsBox>
-                    {
-                        contactData.map((item) => (
-                            <a key={item} href={item.href}>
-                                <Button secondaryBlack={item.style} >
-                                    {item.content}
+
+                {Object.keys(contactData).map(((keyName, i) => {
+
+const objects = contactData[keyName].multiBox;
+
+const objectTitles = objects.map((item, i) => {
+  if (item['type'] == "content") {
+    return item
+  }
+})//check for icon option just to be safe
+
+const objectStyles = objects.map((item, i) => {
+  if (item['type'] == "styl") {
+    return item
+  }
+})
+//check for content option just to be safe
+
+const objectHrefs = objects.map((item, i) => {
+  if (item['type'] == "href") {
+    return item
+  }
+})
+//check for content option just to be safe
+
+const objectTitle = objectTitles
+  .filter(item => item !== undefined)[0]['content']
+
+const objectStyle = objectStyles
+  .filter(item => item !== undefined)[0]['content']
+
+const objectHref = objectHrefs
+  .filter(item => item !== undefined)[0]['content']
+  
+
+
+return (
+  <>
+                            <a key={uuid()} href={objectHref}>
+                                <Button  {...objectStyle} >
+                                    {objectTitle}
                                 </Button>
                             </a>
-                        ))
-                    }
+  </>
+)
+
+}))
+}
+                
                 </ButtonsBox>
             </StyledBottomNav>
         </Transition>

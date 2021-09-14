@@ -164,7 +164,11 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       order
-      paragraphs
+      paragraphs {
+        fieldsList {
+          paragraph
+        }
+      }
       phone {
         multiBox {
           content

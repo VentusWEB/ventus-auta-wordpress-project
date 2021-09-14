@@ -65,7 +65,20 @@ export const AdressBox = styled.div`
 
 `
 
-export const MapLocation = styled(Map)`
+export const MapLocation = styled.div`
+
+img {
+  width: 200px;
+  height: auto;
+  margin: 1rem auto;
+
+  @media (min-width: ${({ theme }) => theme.device.m}) {
+    width: 80%;
+    height: auto;
+  } 
+}
+
+svg {
   fill: ${({ theme }) => theme.colors.secondary};
   width: 200px;
   height: auto;
@@ -75,6 +88,8 @@ export const MapLocation = styled(Map)`
     width: 80%;
     height: auto;
   } 
+}
+
 `
 
 
@@ -136,6 +151,10 @@ export const ToggleableBg = styled(Logo)`
   height: 100%;
   top: 0;
   right: 0;
+`
+
+export const ContactIcon = styled.div`
+  
 `
 
 export const ContactSectionsBox = styled.div`

@@ -6,6 +6,7 @@
 	"author": "Felikso <aleksandrasniegucka@wp.pl>",
 	"dependencies": {
 		"@browniebroke/gatsby-image-gallery": "^6.2.1",
+		"@paulkre/gatsby-transformer-svg": "^1.1.0",
 		"@react-icons/all-files": "^4.1.0",
 		"@svgr/webpack": "^5.5.0",
 		"detect-it": "^4.0.1",
@@ -25,6 +26,7 @@
 		"gatsby-plugin-react-svg": "^3.0.1",
 		"gatsby-plugin-robots-txt": "^1.6.2",
 		"gatsby-plugin-sharp": "^3.4.1",
+		"gatsby-plugin-smoothscroll": "^1.2.0",
 		"gatsby-plugin-styled-components": "^4.6.0",
 		"gatsby-plugin-svgr": "^3.0.0-beta.0",
 		"gatsby-plugin-yandex-metrika": "^2.5.0",
@@ -45,7 +47,11 @@
 		"react-helmet": "^6.1.0",
 		"react-image-lightbox": "^5.1.1",
 		"react-modal": "^3.14.3",
+		"react-scroll": "^1.8.4",
+		"react-scrollspy": "^3.4.3",
 		"react-toggle": "^4.1.2",
+		"react-uuid": "^1.0.2",
+		"smoothscroll-polyfill": "^0.4.4",
 		"styled-components": "^5.3.0"
 	},
 	"keywords": [

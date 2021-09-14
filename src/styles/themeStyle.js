@@ -1,11 +1,24 @@
 const fontSize = {
-    xs: "10px",
+    xs: "clamp(0.6rem,0.5vw,.9rem)",
+    s: "clamp(.5rem,.8vw,1rem)",
+    m: "clamp(.8rem,1.4vw,1.5rem)",
+    l: "clamp(1rem,2vw,2rem)",
+    xl: "clamp(2rem,5vw,5rem)",
+    xxl: "clamp(3rem,vw,8rem)",
+    footerIcon: "clamp(0.75rem,2vw,1rem)",
+    featuresrIcon: "clamp(2rem,12vw,8rem)",
+    navSlogansmall: "8px",
+    navSloganBig: "clamp(0.125rem,1vw,.8rem)",
+    navBrandNamesmall: "14px",
+    navBrandNameBig: "clamp(.8rem,2vw,1.5rem)",
+    navButtons: "clamp(0.125rem,1vw,.8rem)",
+/*     xs: "10px",
     s: "clamp(0.75rem,1.5vmax,.8rem)",
     m: "clamp(0.75rem,1.5vmax,.8rem)",
     l: "clamp(0.75rem,1.5vmax,.8rem)",
     xl: "clamp(0.75rem,1.5vmax,.8rem)",
     xxl: "clamp(0.75rem,1.5vmax,.8rem)",
-    footerIcon: "clamp(0.75rem,1.5vmax,.8rem)",
+    footerIcon: "clamp(0.75rem,1.5vmax,.8rem)", */
 }
 
 const controls = {

@@ -86,13 +86,13 @@ module.exports = {
 		'gatsby-plugin-robots-txt',
 		`gatsby-plugin-polyfill-io`,
 		`gatsby-plugin-preact`,
-		{
+/* 		{
 			resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
 			options: {
 				devMode: true,
 			},
-		},
-		{
+		}, */
+/* 		{
 			resolve: `gatsby-plugin-yandex-metrika`,
 			options: {
 				// The ID of yandex metrika.
@@ -108,7 +108,7 @@ module.exports = {
 				// Async enables earlier loading of the metrika but it can negatively affect page loading speed. The default value is `false`.
 				defer: true,
 			},
-		},
+		}, */
 		{
 			resolve: `gatsby-source-wordpress`,
 			options: {
@@ -127,7 +127,17 @@ module.exports = {
 			  },
 			},
 		  },
+		  "@paulkre/gatsby-transformer-svg",
+		  {
+			resolve: "gatsby-plugin-react-svg",
+			options: {
+			  rule: {
+				include: /\.inline\.svg$/, // See below to configure properly
+			  },
+			},
+		  },
 		`gatsby-plugin-modal-gallery`,
 		"gatsby-plugin-offline",
+		
 	],
 };

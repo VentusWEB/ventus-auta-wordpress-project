@@ -1,6 +1,10 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
   ventuswebadmin(id: $id) {
-    components
+    components {
+      fieldsList {
+        paragraph
+      }
+    }
     contentType {
       node {
         id

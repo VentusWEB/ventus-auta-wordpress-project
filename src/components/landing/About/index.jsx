@@ -1,75 +1,168 @@
 import React from 'react';
 
+import uuid from 'react-uuid'
+
+import { GatsbyImage } from "gatsby-plugin-image"
+
 import { Wrapper, GridWrapper, AboutIconsBox, FeaturesBox } from './styles';
 import { SectionTitle, PropCard, ContentBox } from 'components/common'
 
-import { ReactComponent as ValueIcon } from 'assets/icons/ventus-trade-wartosc.svg'
-import { ReactComponent as DivIcon } from 'assets/icons/ventus-trade-dywersyfikacja.svg'
-import { ReactComponent as InnoIcon } from 'assets/icons/ventus-trade-innowacja.svg'
+export const About = ({ AboutData, AboutFeatures }) => {
 
+    const order = AboutData.order
 
+    const title = AboutData.textHeader
 
-export const About = () => {
+    const id = AboutData.sectionTitle.replace(" ", "-").toLowerCase()
+
+    const content = AboutData.paragraphs.fieldsList
 
     return (
-        <Wrapper id="about" >
+        <Wrapper id={id} css={`{ order: ${order}; }`}  >
             <SectionTitle secondary>
-                <h4>O firmie</h4>
+                <h4>{title}</h4>
             </SectionTitle>
 
             <GridWrapper>
                 <ContentBox>
-                    <p>Jesteśmy młodym przedsiębiorstwem, prowadzącym własną działalność od początku 2020 roku. Główną naszą motywacją są możliwości kreowane przez współczesny rynek.</p>
 
-                    <p>W skład naszego zespołu wchodzą osoby o zróżnicowanych umiejętnościach i kompetencjach. Różnorodność ta pozwala nam na tworzenie wartości istotnej zarówno dla Nabywcy jak i Usługodawcy.</p>
-
-                    <p>Zdywersyfikowana działalność umożliwia nam stały rozwój oraz obmyślanie i wdrażanie innowacji.</p>
-
-                    <p>Serdecznie zapraszamy do zapoznania się z naszą Ofertą, której zakres sukcesywnie planujemy powiększać.</p>
+                        {
+                            content.map(( item, i ) => ( (i==content.length-1) ? 
+                            (<em>{item.paragraph}</em>)
+                            :
+                            (<p>{item.paragraph}</p>)
+                            ))
+                        }
                 </ContentBox>
 
                 <AboutIconsBox>
-                    <PropCard third content="innowacja" className="first">
-                        <InnoIcon />
-                    </PropCard>
 
-                    <PropCard fourth content="dywersyfikacja" className="second">
-                        <DivIcon />
-                    </PropCard>
+                {Object.keys(AboutFeatures).map(((keyName, i) => {
 
-                    <PropCard third content="wartość" className="third">
-                        <ValueIcon />
-                    </PropCard>
+                                                const objects = AboutFeatures[keyName].multiBox;
+
+                                                const objectTitles = objects.map((item) => {
+                                                if (item['type'] == "title") {
+                                                    return item
+                                                }
+                                                })
+                                                //check for content option just to be safe
+
+                                                const objectIcons = objects.map((item) => {
+                                                    if (item['type'] == "icon") {
+                                                        return item
+                                                    }
+                                                })//check for icon option just to be safe
+
+
+                                                const objectTitle = objectTitles
+                                                .filter(item => item !== undefined)[0]['content']
+
+                                                const objectIcon = objectIcons
+                                                .filter(item => item !== undefined)[0]
+
+
+                                                const icon = objectIcon.img?.localFile.childSvg
+
+                                                const img = objectIcon.img?.localFile.childImageSharp
+
+                                                const alt = objectIcon.img?.altText
+
+                                                const even = i%2==0 ? true : false
+
+                                                const odd = i%2==0 ? false : true
+
+                                                return (
+                                                <>
+
+                                                                <PropCard fourth={even} third={odd} content={objectTitle} className={`item-${i}`} key={uuid()}>
+                                                                                    {img
+                                                                                        ?
+                                                                                            <GatsbyImage
+                                                                                            alt={alt ? alt : objectName}
+                                                                                            image={img.gatsbyImageData}
+                                                                                            />
+
+                                                                                        :
+
+                                                                                        icon
+
+                                                                                            ?
+
+                                                                                            <div
+                                                                                            dangerouslySetInnerHTML={{ __html: icon.content.data }}
+                                                                                            />
+
+                                                                                            :
+
+                                                                                            null
+                                                                                        }
+                                                                </PropCard>
+
+                                                </>
+                                                )
+
+                                                }))
+                                                }
+
                 </AboutIconsBox>
             </GridWrapper>
             <FeaturesBox>
-                <ContentBox>
-                    <SectionTitle third>
-                        <h4>Innowacja</h4>
-                    </SectionTitle>
-                    <em>Innowacja to jedna z naszych trzech priorytetowych koncepcji, którymi kierujemy się w tworzeniu polityki naszego Przedsiębiorstwa.</em>
 
-                    <p>Istotą naszych działań jest wprowadzanie stałych ulepszeń, obejmujących procesy oraz funkcje organizacyjne. Ważne staje się generowanie rozmaitych pomysłów, których efektem może stać się kluczowa wartość dla Nabywcy oraz Usługodawcy.</p>
+                        {Object.keys(AboutFeatures).map(((keyName, i) => {
 
-                </ContentBox>
+                                const objects = AboutFeatures[keyName].multiBox;
 
-                <ContentBox secondary>
-                    <SectionTitle fourth>
-                        <h4>Dywersyfikacja</h4>
-                    </SectionTitle>
-                    <em>Dywersyfikacja to jedna z naszych trzech priorytetowych koncepcji, którymi kierujemy się w tworzeniu polityki naszego Przedsiębiorstwa.</em>
-                    <p>Świadome rozdzielanie kierunków działalności umożliwia nabywanie zróżnicowanej wiedzy oraz doświadczenia, których efektem może stać się wytworzenie wyspecjalizowanych umiejętności o wzbogaconej strukturze. Dzięki temu połączeniu Nabywca jest zdolny uzyskać efekt wykraczający ponad jego dotychczasowe oczekiwania.</p>
+                                const objectTitles = objects.map((item) => {
+                                if (item['type'] == "title") {
+                                    return item
+                                }
+                                })
+                                //check for content option just to be safe
 
-                </ContentBox>
+                                const objectMottos = objects.map((item) => {
+                                if (item['type'] == "motto") {
+                                    return item
+                                }
+                                })
+                                //check for content option just to be safe
 
-                <ContentBox>
-                    <SectionTitle third>
-                        <h4>Wartość</h4>
-                    </SectionTitle>
-                    <em>Wartość to jedna z naszych trzech priorytetowych koncepcji, którymi kierujemy się w tworzeniu polityki naszego Przedsiębiorstwa.</em>
-                    <p>Interpretujemy ją jako zasady, którymi kierujemy się w Polityce naszego Przedsiębiorstwa, jak również istotny efekt, wywierający wpływ na doświadczenie Klienta. Fundamentem naszej filozofii jest teza, iż prawdziwą wartością jest rezultat wywierający pozytywne oddziaływanie dla każdej ze stron transakcji.</p>
+                                const objectDescs = objects.map((item, i) => {
+                                    if (item['type'] == "desc") {
+                                        return item
+                                    }
+                                })
+                                //check for content option just to be safe
 
-                </ContentBox>
+                                const objectTitle = objectTitles
+                                .filter(item => item !== undefined)[0]['content']
+
+                                const objectMotto = objectMottos
+                                .filter(item => item !== undefined)[0]['content']
+
+                                const objectDesc = objectDescs
+                                .filter(item => item !== undefined)[0]['content']
+
+                                const even = i%2==0 ? true : false
+
+                                const odd = i%2==0 ? false : true
+
+                                return (
+                                <>
+
+                                                <ContentBox secondary={odd}>
+                                                    <SectionTitle fourth={odd} third={even}>
+                                                        <h4>{objectTitle}</h4>
+                                                    </SectionTitle >
+                                                        <em>{objectMotto}</em>
+                                                        <p>{objectDesc}</p>
+                                                    </ContentBox>
+
+                                </>
+                                )
+
+                                }))
+                                }
             </FeaturesBox>
         </Wrapper>
 

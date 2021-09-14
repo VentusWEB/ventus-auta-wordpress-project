@@ -22,7 +22,7 @@ export const CookiesBanner = ({ children, offerLinks, showBelow }) => {
             window.addEventListener(`scroll`, handleScroll, { passive: true })
             return () => window.removeEventListener(`scroll`, handleScroll, { passive: true })
         }
-    })
+    }, [])
 
 
     return (

@@ -36,16 +36,16 @@ export const AboutIconsBox = styled.div`
     grid-template-rows: 1fr 1fr 1fr 1fr; 
     gap: 0px 0px; 
     grid-template-areas: 
-      "first first . . . ."
-      "first first second second . ."
-      ". . second second third third"
-      ". . . . third third"; 
+      "item-0 item-0 . . . ."
+      "item-0 item-0 item-1 item-1 . ."
+      ". . item-1 item-1 item-2 item-2"
+      ". . . . item-2 item-2"; 
 
-      .first { grid-area: first; }
+      .item-0 { grid-area: item-0; }
 
-      .second { grid-area: second; }
+      .item-1 { grid-area: item-1; }
 
-      .third { grid-area: third; }
+      .item-2 { grid-area: item-2; }
   }
 `
 

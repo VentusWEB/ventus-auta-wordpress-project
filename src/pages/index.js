@@ -1,75 +1,365 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby"
-import { Layout } from "components/theme"
+import { Layout, CustomedNav } from "components/theme"
 import { Seo, HeroHeader, SeparateBox } from "components/common";
 import { Offer, About, ContactLocation } from "components/landing";
 
-import { getImage } from "gatsby-plugin-image"
 
 const Home = () => {
-	const { img, productData, products } = useStaticQuery(
+
+	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent, MainFeatures, mainArray,  img, productData, products } = useStaticQuery(
 		graphql`
 	query {
-		products: allWpVentusautaproduct {
-			edges {
-			  node {
-				slug
-			  }
-			}
-		  }
 
-	  img:  file(relativePath: { eq: "PageHeaders/homeBg.jpg" }) {
-		  childImageSharp {
-			gatsbyImageData(
-				width: 1200, 
-				quality: 60, 
-				webpOptions: {quality: 75})
-			}
-		  }
+		SeoData: wpLasykescore(slug: {eq: "seo-content"}) {
+            author
+            city
+            country
+            dir
+            email
+            facebook
+            instagram
+            logoUrl
+            legalName
+            lang
+            phone
+            region
+            siteDescription
+            siteBrand
+            thumbnail {
+              altText
+              localFile {
+                ...FileFragmentSvg
+                ...FileFragmentImg
+              }
+            }
+            siteTitle
+            twitter
+            title
+            github
+            defaultTitle
+            defaultDescription
+            foundingDate
+            zipCode
+            url
+          }
 
-		  productData:  allItemsDataJson {
-			nodes {
-			  slug
-			  name
-			  price
-			  invoice
-			  petrol
-			  course
-			  rgb
-	
-			  mainImage {
-				childImageSharp {
-					gatsbyImageData(
-						quality: 60, 
-						webpOptions: {quality: 60})
+
+          mainArray: allWpVentusautamain(filter: {slug: {glob: "*section-page"}}) {
+            edges {
+              node {
+                sectionTitle
+                order
+              }
+            }
+          }
+
+		  ContactBrandInfo: wpVentusautamain(slug: {eq: "contact-section-page"}) {
+
+				brandInfo1 {
+					multiBox {
+					content
+					title
+					type
 					}
-			  
+				}
+				brandInfo2 {
+					multiBox {
+					content
+					title
+					type
+					}
+				}
+			}
+
+
+		  ContactItems:  wpVentusautamain(slug: {eq: "contact-section-page"}) {
+
+			phone {
+				multiBox {
+				  content
+				  type
+				  title
+				  img {
+					localFile {
+					  childImageSharp {
+						gatsbyImageData
+					  }
+					  childSvg {
+						content {
+						  data
+						}
+					  }
+					}
+				  }
+				}
 			  }
+
+			mail {
+				multiBox {
+					content
+					type
+					title
+					img {
+					  localFile {
+						childImageSharp {
+						  gatsbyImageData
+						}
+						childSvg {
+						  content {
+							data
+						  }
+						}
+					  }
+					}
+				  }
+				}
+
+			whatsapp {
+				multiBox {
+					content
+					type
+					title
+					img {
+					  localFile {
+						childImageSharp {
+						  gatsbyImageData
+						}
+						childSvg {
+						  content {
+							data
+						  }
+						}
+					  }
+					}
+				  }
+				}
+
+		  	}
+	
+
+		  LocationContent: wpVentusautamain(slug: {eq: "location-section-page"}) {
+			paragraphs {
+				fieldsList {
+				  paragraph
+				}
+			  }
+		  }
+
+		   
+          LocationAddress: wpVentusautamain(slug: {eq: "location-section-page"}) {
+		  locationInfo1 {
+			multiBox {
+			  content
+			  title
+			  type
 			}
 		  }
+		  locationInfo2 {
+			multiBox {
+			  content
+			  title
+			}
+		  }
+		}
+
+
+
+          LocationMap: wpVentusautamain(slug: {eq: "location-section-page"}) {
+			map {
+				localFile {
+					childImageSharp {
+						gatsbyImageData(
+							quality: 60, 
+							webpOptions: {quality: 60})
+						}
+				  childSvg {
+					id
+					content {
+					  data
+					}
+				  }
+				}
+			  }
+            }
+     
+
+
+		products: allWpVentusautaproduct {
+
+			  nodes {
+				slug
+				productName
+				price
+				invoice {
+					checkboxOptions {
+					  checked
+					  value
+					}
+				  }
+				oil
+				course
+				courseValue
+	  
+				mainImage {
+					localFile{
+						childImageSharp {
+							gatsbyImageData(
+								quality: 60, 
+								webpOptions: {quality: 60})
+							}
+						}
+					}
+			}
+		}
+
+		  LocationData: wpVentusautamain(slug: {eq: "location-section-page"}) {
+            ...CommonContent
+
+			map {
+				localFile {
+					childImageSharp {
+						gatsbyImageData(
+							quality: 60, 
+							webpOptions: {quality: 60})
+						}
+				  childSvg {
+					id
+					content {
+					  data
+					}
+				  }
+				}
+			  }
+
+			  paragraphs {
+				fieldsList {
+				  paragraph
+				}
+			  }
+
+          }
+
+
+		  ContactData: wpVentusautamain(slug: {eq: "contact-section-page"}) {
+            ...CommonContent
+          }
+
+
+		  AboutData: wpVentusautamain(slug: {eq: "about-section-page"}) {
+            ...CommonContent
+			paragraphs {
+				fieldsList {
+				  paragraph
+				}
+			  }
+          }
+
+		  AboutFeatures: wpVentusautamain(slug: {eq: "about-section-page"}) {
+
+		  features1 {
+			multiBox {
+			  content
+			  img {
+				localFile {
+					childImageSharp {
+					  gatsbyImageData
+					}
+					childSvg {
+					  content {
+						data
+					  }
+					}
+				  }
+			  	}
+			  title
+			  type
+			}
+		  }
+
+		  features2 {
+			multiBox {
+			  content
+			  img {
+				localFile {
+					childImageSharp {
+					  gatsbyImageData
+					}
+					childSvg {
+					  content {
+						data
+					  }
+					}
+				  }
+			  	}
+			  title
+			  type
+			}
+		  }
+
+		  features3 {
+			multiBox {
+			  content
+			  img {
+				localFile {
+					childImageSharp {
+					  gatsbyImageData
+					}
+					childSvg {
+					  content {
+						data
+					  }
+					}
+				  }
+			  	}
+			  title
+			  type
+			}
+		  }
+
+		}
+		  OfferData: wpVentusautamain(slug: {eq: "offer-section-page"}) {
+            ...CommonContent
+			paragraphs {
+				fieldsList {
+				  paragraph
+				}
+			  }
+          }
+
+	
+
 	}
 	`
 	);
 
 
-	const backgroundImage = getImage(img);
-	console.log(products)
+	let menuArray = [];
+
+	menuArray = mainArray.edges.map(function (item) {
+  
+	  return {
+		path: item.node.sectionTitle.replace(" ", "-").toLowerCase(),
+		label: item.node.sectionTitle,
+		order: item.node.order
+	  };
+	});
 
 	return (
 		<Layout>
-			<Seo title="Ventus Trade Auta" location="/" />
+			<Seo title="Ventus Trade Auta" location="/" SeoData={SeoData}/>
+
+<CustomedNav scroll={true} menuItems={menuArray} />
 			<HeroHeader
 				small
-				bgImage={backgroundImage}
-				backgroundImage={img}
-				HeroBrandName="Ventus Trade"
-				HeroSubName="pojazdy & urządzenia"
 			>
 			</HeroHeader>
 			<SeparateBox />
-			<Offer productData={productData} />
-			<ContactLocation />
-			<About />
+			<div css={`display: flex; flex-direction: column;`}>
+			<Offer productData={products} OfferData={OfferData} />
+			<ContactLocation ContactData={ContactData} LocationData={LocationData} LocationMap={LocationMap} LocationAddress={LocationAddress} LocationContent={LocationContent} ContactItems={ContactItems} ContactBrandInfo={ContactBrandInfo}/>
+			<About AboutData={AboutData} AboutFeatures={AboutFeatures} />
+			</div>
 
 		</Layout>
 	)

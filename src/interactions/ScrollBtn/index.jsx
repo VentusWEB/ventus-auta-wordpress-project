@@ -28,7 +28,7 @@ export const ScrollBtn = ({
             window.addEventListener(`scroll`, handleScroll, { passive: true })
             return () => window.removeEventListener(`scroll`, handleScroll, { passive: true })
         }
-    })
+    }, [])
 
     return (
         <div>

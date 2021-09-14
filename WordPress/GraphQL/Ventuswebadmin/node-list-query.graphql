@@ -1,7 +1,11 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
   ventuswebadmins(first: $first, after: $after) {
     nodes {
-      components
+      components {
+        fieldsList {
+          paragraph
+        }
+      }
       contentType {
         node {
           id

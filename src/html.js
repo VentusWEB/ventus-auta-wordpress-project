@@ -16,7 +16,7 @@ export default function HTML(props) {
             </head>
             <body {...props.bodyAttributes}>
                 {props.preBodyComponents}
-                <script
+                {/* <script
                     dangerouslySetInnerHTML={{
                         __html: `
                             setTimeout(function(){
@@ -37,7 +37,7 @@ export default function HTML(props) {
                         </script><noscript><div><img src="https://mc.yandex.ru/watch/64917802" style="position: absolute; left: -9999px;" alt /></div></noscript>
             `
                     }}
-                />
+                /> */}
                 <div
                     key={`body`}
                     id="___gatsby"

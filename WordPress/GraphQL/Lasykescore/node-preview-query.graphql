@@ -176,7 +176,7 @@ query PREVIEW_QUERY($id: ID!) {
       id
     }
     siteSlogan
-    siteTtitle
+    siteTitle
     slug
     status
     template {
