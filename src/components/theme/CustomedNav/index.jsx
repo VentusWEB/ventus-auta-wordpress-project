@@ -6,16 +6,12 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { Link } from 'gatsby'
 
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-
 import scrollTo from "gatsby-plugin-smoothscroll"
 
 
 import uuid from 'react-uuid'
 
-import Scroll from "./Scroll"
-
-import { StyledMobileLogo, LogoBox, StyledHeader, ScrollLinkUl, MenuIconContainer, MenuIcon, DesktopToggler,  TopHeaderBox, TogglerBurgerBox } from "./styles"
+import { LogoBox, StyledHeader, ScrollLinkUl, MenuIconContainer, MenuIcon, DesktopToggler,  TopHeaderBox, TogglerBurgerBox } from "./styles"
 import { NavButton, Button } from 'components/common'
 import Toggler from './Toggler';
 

@@ -4,14 +4,12 @@ import { Seo, HeroHeader, HeroBanner } from "components/common";
 import { graphql, useStaticQuery } from "gatsby"
 import { CustomedNav } from 'components/theme'
 
-import { getImage } from "gatsby-plugin-image"
-
 const NotFound = () => {
 	const { SeoData, ErrorData } = useStaticQuery(
 		graphql`
 	query {
 
-		SeoData: wpLasykescore(slug: {eq: "seo-content"}) {
+		SeoData: wpVentusautacore(slug: {eq: "seo-content"}) {
             author
             city
             country

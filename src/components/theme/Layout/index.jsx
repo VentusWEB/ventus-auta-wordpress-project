@@ -22,7 +22,7 @@ export const Layout = ({ children, alternativeLinks }) => {
     graphql`
       query {
 
-        ThemeData: wpLasykescore(slug: {eq: "theme-content"}) {
+        ThemeData: wpVentusautacore(slug: {eq: "theme-content"}) {
           primary
           primaryLight
           secondary

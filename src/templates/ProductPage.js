@@ -30,7 +30,6 @@ query($slug: String!) {
     description
     vin
     type
-    slug
     price
     grossPrice
     gearbox
@@ -39,7 +38,6 @@ query($slug: String!) {
     oil
     model
     productName
-    productFullName
     year
     mainImage {
       localFile {
@@ -84,11 +82,6 @@ query($slug: String!) {
         checked
       }
     }
-    sold {
-      checkboxOptions {
-        checked
-      }
-    }
     images: gallery {
       imagesList {
         image {
@@ -102,62 +95,13 @@ query($slug: String!) {
       }
     }
     drive
-    course
     capacity
     brand
   } 
 
 
-    itemsDataJson(slug: { eq: $slug }) {
-      name
-      description
-      extras
-      vin
-      type
-      price
-      grossPrice
-      power
-      petrol
-      imported
-      invoice
-      brand
-      model
-      generation
-      year
-      course
-      capacity
-      gearbox
-      drive
-      loanable
-      rgb
 
-      mainImage {
-        childImageSharp {
-          gatsbyImageData
-        }
-        name
-      }
-
-      photos: gallery{
-        image {
-          childImageSharp {
-            gatsbyImageData
-          }
-          name
-        }
-      }
-    }
-
-	  img:  file(relativePath: { eq: "PageHeaders/homeBg.jpg" }) {
-		  childImageSharp {
-			gatsbyImageData(
-				width: 1200, 
-				quality: 60, 
-				webpOptions: {quality: 75})
-			}
-		  }
-
-      SeoData: wpLasykescore(slug: {eq: "seo-content"}) {
+      SeoData: wpVentusautacore(slug: {eq: "seo-content"}) {
         author
         city
         country
@@ -238,13 +182,9 @@ const ProductPage = ({ data, key }) => {
 
   const backgroundImage = getImage(data.img);
 
-  const productData = data.itemsDataJson
-
   const SeoContent = data.SeoData
 
   const singleProductData = data.wpVentusautaproduct
-
-/*   const mainImage = mainImage */
 
   const mainImage = singleProductData.mainImage.localFile
 
@@ -278,7 +218,6 @@ const ProductPage = ({ data, key }) => {
 
   const {
     drive,
-    sold,
     properties,
     loanable,
     imported,
@@ -300,12 +239,9 @@ const ProductPage = ({ data, key }) => {
     oil,
     model,
     productName,
-    productFullName,
     year
   } = singleProductData
 
-/*   const checkValue = checkboxOptions.check */
- 
   return (
     <Layout alternativeLinks={alternativeLinks}>
       <Seo SeoData={SeoContent} />

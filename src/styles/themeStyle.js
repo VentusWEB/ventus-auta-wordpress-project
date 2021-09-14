@@ -103,7 +103,7 @@ export const themeStyleDark = {
     nav,
 
     colors: {
-        primary: "rgb(20, 9, 160)", /* blue */
+        primary: "#1409a0", /* blue */
         primaryLight: "#8C98FF",
         secondary: "#D4D4D4", /* light */
         secondaryLight: "#d4d4d01f", /* light */

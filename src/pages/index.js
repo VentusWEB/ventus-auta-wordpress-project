@@ -7,11 +7,11 @@ import { Offer, About, ContactLocation } from "components/landing";
 
 const Home = () => {
 
-	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent, MainFeatures, mainArray,  img, productData, products } = useStaticQuery(
+	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent,  mainArray,  products } = useStaticQuery(
 		graphql`
 	query {
 
-		SeoData: wpLasykescore(slug: {eq: "seo-content"}) {
+		SeoData: wpVentusautacore(slug: {eq: "seo-content"}) {
             author
             city
             country

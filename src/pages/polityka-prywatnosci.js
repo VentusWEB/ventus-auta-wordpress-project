@@ -4,14 +4,12 @@ import { Seo, HeroHeader, ContentBox, SectionTitle } from "components/common";
 import { graphql, useStaticQuery } from "gatsby"
 import { CustomedNav } from 'components/theme'
 
-import { getImage } from "gatsby-plugin-image"
-
 const PolicyPage = () => {
 	const { SeoData, PolicyData } = useStaticQuery(
 		graphql`
 	query {
 
-		SeoData: wpLasykescore(slug: {eq: "seo-content"}) {
+		SeoData: wpVentusautacore(slug: {eq: "seo-content"}) {
             author
             city
             country
