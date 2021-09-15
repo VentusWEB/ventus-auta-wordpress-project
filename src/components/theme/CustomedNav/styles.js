@@ -49,16 +49,21 @@ padding-bottom: 10px;
 
 export const ScrollLinkUl = styled(Scrollspy)`
 
-/* .current::after {
+/* button {
+  transition: ${({ theme }) => theme.transitions.primary}; 
+}
+
+.current button::before {
   position: absolute;
   content: '';
   width: 100%;
   top: 50%;
   left: 50%;
   height: 10px;
-  transform: translate(-50%, 2rem);
-
-  background: ${({ theme }) => theme.colors.primaryLight}; 
+  transform: translate(-50%, 1rem);
+  color: brown;
+  transition: ${({ theme }) => theme.transitions.primary}; 
+  background: ${({ theme }) => theme.colors.primary}; 
 }
  */
 .current button{
@@ -67,7 +72,7 @@ export const ScrollLinkUl = styled(Scrollspy)`
 
 }
 
-li::after{
+li::before{
   width: 100%;
 }
 
@@ -158,7 +163,7 @@ div {
 export const StyledHeader = styled.header`
 
 @media (max-width: ${({ theme }) => theme.device.l}) {
-  display: flex;
+  display: block;
 flex-direction: column;
 justify-content: center;
 align-items: center;
@@ -168,12 +173,12 @@ overflow: hidden;
 background-color: ${({ theme }) => theme.colors.third};
 z-index: 1000;
 height: 60px;
-width: calc(100% - 10px);
-padding: 0 5px;
+width: calc(100% - 6px);
+padding: 0 3px;
 transition: 300ms;
 margin: 0;
 
-height: ${({ menuOpen, height, items, boxHeight }) => (menuOpen ? 70+items*height+'px': '60px')};
+height: ${({ menuOpen, height, items, boxHeight }) => (menuOpen ? 70+(items+1)*height+'px': '60px')};
 
 ul {
   width: 100%;
@@ -212,6 +217,7 @@ ul {
 } 
 }
 @media (min-width: ${({ theme }) => theme.device.l}) {
+  display: unset;
   padding-top: unset;
   display: flex;
   position: fixed;
@@ -241,10 +247,10 @@ ul {
       text-decoration: none;
       color: ${({ theme }) => theme.colors.secondary};
 /*       color: ${({ background, theme }) => (background ? theme.colors.secondary : theme.colors.primary)}; */
-      transition: color 300ms;
+      transition: filter 300ms;
 
-        : hover {
-        color: ${({ theme }) => theme.colors.hoverLinks};
+        &:hover {
+          filter: brightness(0.6);
       }
     }
   }

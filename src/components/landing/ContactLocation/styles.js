@@ -146,7 +146,7 @@ export const ContactSectionWrapper = styled.section`
 
 `
 export const ToggleableBg = styled(Logo)`
-  fill: ${({ theme }) => theme.colors.secondaryLight};
+  fill: ${({ theme }) => theme.colors.secondary};
   position: absolute;
   height: 100%;
   top: 0;

@@ -50,14 +50,14 @@ export const CustomedNav = ({ /* siteTitle,  */menuItems, scroll, Title, LogoImg
   const [menuOpen, toggleMenuOpen] = useState(false)
   const liRef = useRef(null)
   const boxRef = useRef(null)
-  useEffect(() => {
+/*   useEffect(() => {
     const div = liRef.current;
     console.log(liRef)
-  }, [liRef]);
+  }, [liRef]); */
 
   let showStyle = null
   if (isVisible) {
-    showStyle = { color: 'red' }
+    showStyle = { color: 'green' }
   } else {
     showStyle = null
   }

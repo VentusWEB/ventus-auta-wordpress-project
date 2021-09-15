@@ -93,7 +93,7 @@ border: none;
 background: transparent;
 cursor: pointer;
 text-transform: uppercase;
-color: ${({ theme }) => theme.colors.secondaryLight};
+color: ${({ theme }) => theme.colors.secondary};
 font-size: ${({ theme }) => theme.fontSize.navButtons};
 
 .current {
