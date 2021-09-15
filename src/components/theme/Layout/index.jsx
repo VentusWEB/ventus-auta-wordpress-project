@@ -181,7 +181,7 @@ colorDark.background = fontColor ? fontColor : colorDark.background
         <Global theme={themeMode == 'light' ? theme : themeDark} />
 {/*         <CustomedNav links={alternativeLinks ? alternativeLinks : links} /> */}
         {/*         <CookiesBanner showBelow={250} /> */}
-        <ScrollBtn showBelow={250} />
+{/*         <ScrollBtn showBelow={250} /> */}
         {children}
         <BottomNav contactData={bottomNavContent} />
         <CustomedFooter footerLinkContent={footerLinkContent} footerSocialIcons={footerSocialIcons} footerContentData={footerContentData}/>

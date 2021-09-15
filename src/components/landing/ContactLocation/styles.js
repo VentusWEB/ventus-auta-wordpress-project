@@ -31,11 +31,11 @@ export const LocationContentBox = styled(ContentBox)`
 
 
 
+
   @media (min-width: ${({ theme }) => theme.device.m}) {
     grid-template-columns: 1.5fr 1fr;
     align-items: start;
     justify-content: space-around;
-
     display: flex;
     flex-direction: column-reverse;
     align-items: stretch;
@@ -96,8 +96,7 @@ svg {
 export const LocationContainer = styled.div`
 display: flex;
 flex-direction: column-reverse;
-width: 90%;
-margin: auto;
+width: 100%;
 
 @media (min-width: ${({ theme }) => theme.device.m}) {
   display: grid;
@@ -114,6 +113,7 @@ margin: auto;
 export const GridContactInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+
   @media (min-width: ${({ theme }) => theme.device.m}) {
     grid-template-columns: 1fr 1fr;
   }
@@ -133,7 +133,7 @@ export const ContactIconsBox = styled.div`
   justify-content: space-evenly;
   align-items: center;
   padding: 40px 0;
-
+  background: ${({ theme }) => theme.colors.third};
   @media (min-width: ${({ theme }) => theme.device.m}) {
     display: none;
   }
@@ -161,12 +161,9 @@ export const ContactSectionsBox = styled.div`
   
   color: ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.third};  
-  padding: ${({ theme }) => theme.padding.m}; 
   line-height: 2em;
   position: relative;
-  width: 90%;
-  margin: auto;
-
+  width: 100%;
 
 
   h5{

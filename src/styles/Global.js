@@ -620,8 +620,8 @@ export const Global = createGlobalStyle`
       margin: 0;
       padding: 0;
       font-family: 'Roboto', Helvetica, sans-serif;
-      color: ${({ theme }) => theme.colors.secondary};
-      background-color: ${({ theme }) => theme.colors.third};
+      color: ${({ theme }) => theme.colors.fontColor};
+      background-color: ${({ theme }) => theme.colors.background};
       transition: .3s all;
       font-weight: normal;
       word-wrap: break-word;

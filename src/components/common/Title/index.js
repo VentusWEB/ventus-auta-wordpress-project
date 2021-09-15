@@ -10,7 +10,7 @@ export const Title = styled.div`
     display: inline-block;
     color: ${({ theme }) => theme.colors.secondary};
     margin: 0 20px;
-    font-size: 28px; 
+    font-size: ${({ theme }) => theme.fontSize.l};
 
     &::after {
         content: "";

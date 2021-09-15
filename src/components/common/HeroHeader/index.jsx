@@ -37,8 +37,6 @@ export function HeroHeader({
 
 	const img = bgImage ? bgImage : siteHeader?.localFile.childImageSharp
 
-    console.log(img)
-    console.log('icon')
     return (
         <HeroHeaderBox small={small}>
 

@@ -6,7 +6,7 @@ import { getImage } from 'gatsby-plugin-image'
 
 import { ProductModalGallery } from 'gatsby-plugin-modal-gallery'
 
-import { VinBox, ParametersBox, GridContentBox, GridBoxDetails, GridInfoBox, ModalContainer, ModalInfoBox, ModalGalleryBox } from "components/product"
+import { ProductWrapper, VinBox, ParametersBox, GridContentBox, GridBoxDetails, GridInfoBox, ModalContainer, ModalInfoBox, ModalGalleryBox } from "components/product"
 
 import { alternativeLinks } from "constans/nav-items"
 
@@ -245,7 +245,7 @@ const ProductPage = ({ data, key }) => {
   return (
     <Layout alternativeLinks={alternativeLinks}>
       <Seo SeoData={SeoContent} />
-      <CustomedNav scroll={false} menuItems={menuArray} />
+      <CustomedNav scroll={false} menuItems={menuArray.sort(() => Math.random() - 0.5).slice(0,3)} />
       <HeroHeader small
         bgImage={backgroundImage}
         headerBg="rgba(0,0,0,0.5)"
@@ -258,13 +258,13 @@ const ProductPage = ({ data, key }) => {
         HeroSubName="pojazdy & urządzenia"
       >
       </HeroHeader>
+      <ProductWrapper>
       <Link to="/"><Button back>powrót</Button></Link>
 
       <ModalContainer>
 
         <ModalGalleryBox>
-        <ProductModalGallery styles={styles} mainImage={mainImage}/* styles={styles} currentImg={image} current={image} */ photos={gallery} index='1' />
-          {/* <ProductModalGallery mainImage={mainImage} photos={gallery} /> */}
+        <ProductModalGallery styles={styles} mainImage={mainImage} photos={gallery} index='1' />
         </ModalGalleryBox>
 
         <ModalInfoBox>
@@ -277,7 +277,7 @@ const ProductPage = ({ data, key }) => {
                 <PriceIcon />
               </PropCard>
 
-              <PropCard content={invoice.checkboxOptions.check ? "tak" : "nie"}>
+              <PropCard content={invoice.checkboxOptions[0].checked ? "tak" : "nie"}>
                 <VatIcon />
               </PropCard>
 
@@ -297,7 +297,7 @@ const ProductPage = ({ data, key }) => {
                 <EngineIcon />
               </PropCard>
 
-              <PropCard content={gearbox === 'manual' ? 'manual' : 'automat'}>
+              <PropCard content={gearbox}>
                 {gearbox === 'manual' ? <ManualIcon /> : <AutomatIcon />}
               </PropCard>
 
@@ -352,6 +352,7 @@ const ProductPage = ({ data, key }) => {
         </ModalInfoBox>
 
       </ModalContainer>
+      </ProductWrapper>
     </Layout>
   )
 }

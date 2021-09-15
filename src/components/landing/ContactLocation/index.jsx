@@ -9,7 +9,7 @@ import { SectionTitle, DefaultWrapper, PropCard, DefaultIcon } from 'components/
 
 import { contactItems } from "constans"
 
-import { ContentBox } from 'components/common'
+import { ContentBox, PaddingWrapper } from 'components/common'
 import { deviceType } from 'detect-it';
 
 
@@ -41,9 +41,11 @@ export const ContactLocation = ({ LocationData, LocationAddress, ContactData, Co
                 <SectionTitle>
                     <h4>{title1}</h4>
                 </SectionTitle>
+ 
                 <LocationContainer>
 
                     <LocationContentBox secondary>
+                    <PaddingWrapper>
                     {img ?
                                         <MapLocation>
                                             <GatsbyImage
@@ -104,7 +106,7 @@ export const ContactLocation = ({ LocationData, LocationAddress, ContactData, Co
                                 }
                         </AdressSection>
 
-
+                        </PaddingWrapper>
                     </LocationContentBox>
                     <ContentBox secondary >
                         {
@@ -112,9 +114,11 @@ export const ContactLocation = ({ LocationData, LocationAddress, ContactData, Co
                         }
 
                     </ContentBox>
+
                 </LocationContainer>
 
             </DefaultWrapper>
+
 
             <ReverseBox css={`{ order: ${contactOrder}; }`}>
                 <SectionTitle secondary css={`text-align: left;`} id={id2}>
@@ -200,7 +204,9 @@ export const ContactLocation = ({ LocationData, LocationAddress, ContactData, Co
                                     }
 
                         </ContactIconsBox>
+
                         <ContactSectionsBox>
+                        <PaddingWrapper>
                             <ToggleableBg />
                             <GridContactInfo>
 
@@ -222,16 +228,18 @@ export const ContactLocation = ({ LocationData, LocationAddress, ContactData, Co
 
                                     }))
                                     }
-                    
+                                            
                             </GridContactInfo>
-
+                            </PaddingWrapper>
                         </ContactSectionsBox>
+
                     </ReverseWrapper>
 
 
 
                 </ContactSectionWrapper>
             </ReverseBox>
+
         </>
 
 

@@ -78,6 +78,10 @@ query PREVIEW_QUERY($id: ID!) {
       }
     }
     guid
+    iconSell {
+      __typename
+      id
+    }
     id
     instagram
     isContentNode

@@ -116,7 +116,9 @@ export const CustomedNav = ({ /* siteTitle,  */menuItems, scroll, Title, LogoImg
             
 
 
-          {menuItems.map(value => {
+          {
+
+          menuItems.map(value => {
 
 
 
@@ -133,6 +135,7 @@ export const CustomedNav = ({ /* siteTitle,  */menuItems, scroll, Title, LogoImg
                                       onClick={() => {
                     scrollTo('#' + value.path)
                     setVisibility(0)
+                    toggleMenuOpen(false)
                   }
                   }>
                     {value.label}

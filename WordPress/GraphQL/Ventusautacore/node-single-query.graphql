@@ -78,6 +78,10 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
     }
     guid
+    iconSell {
+      __typename
+      id
+    }
     id
     instagram
     isContentNode

@@ -7,7 +7,7 @@ import { ProductCard } from 'components/product'
 
 
 
-export const Offer = ({ productData, OfferData }) => {
+export const Offer = ({ productData, OfferData, sellIcon }) => {
 
     const order = OfferData.order
 
@@ -46,9 +46,10 @@ export const Offer = ({ productData, OfferData }) => {
                     padding: 50px 0 100px;
                 `}>
                     {productData.nodes.map((product, i) => {
+
                         return (
                             <>
-                                <ProductCard key={i} product={product} bgImage={product.mainImage.localFile.childImageSharp.gatsbyImageData} i={i} />
+                                <ProductCard sellIcon={sellIcon.iconSell} key={i} product={product} bgImage={product.mainImage.localFile.childImageSharp.gatsbyImageData} i={i} />
                             </>
 
                         )

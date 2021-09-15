@@ -40,8 +40,7 @@ font-size: ${({ theme }) => theme.fontSize.s};
 justify-content: center;
 align-items: center;
 padding: 0.3em 0;
-width: 95%;
-margin: auto;
+width: 100%;
 border-top: 2px solid ${({ theme }) => theme.colors.primaryLight};
 
 @media (min-width: ${({ theme }) => theme.device.m}){
@@ -60,6 +59,7 @@ display: grid;
 p{
     text-align: center;
     font-style: italic;
+    justify-self: baseline;
 }
 `
 export const FooterLogo = styled.div`
@@ -71,14 +71,11 @@ font-size: ${({ theme }) => theme.fontSize.m};
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-width: 95%;
-margin: auto;
-padding: 0.5em 0;
+width: 100%;
 
-/* @media (min-width: ${({ theme }) => theme.device.m}){
-  font-size: ${({ theme }) => theme.fontSize.xl};
+@media (min-width: ${({ theme }) => theme.device.m}){
   flex-direction: row;
-} */
+}
 `
 
 export const FooterWrapper = styled.footer`
@@ -131,10 +128,13 @@ export const FooterLink = styled.a`
 
 export const FooterInfo = styled(Link)`
 color: ${({ theme }) => theme.colors.primaryLight}; 
-font-size: ${({ theme }) => theme.fontSize.xs}; 
+font-size: 10px; 
 text-decoration: none;
 margin: .3em;
 transition: ${({ theme }) => theme.transitions.primaryLight}; 
+@media (min-width: ${({ theme }) => theme.device.m}){
+  font-size: ${({ theme }) => theme.fontSize.xs}; 
+}
 &:hover{
   color: ${({ theme }) => theme.colors.secondary};
   /* filter: brightness(0.6); */

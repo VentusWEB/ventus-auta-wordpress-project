@@ -53,7 +53,7 @@ export const ModalInfoBox = styled.div`
 export const ModalContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  margin: 5rem 0;
+  padding: 5rem 0;
 
   @media (min-width: ${({ theme }) => theme.device.l}) {
     grid-template-columns: 1fr .4fr;
@@ -174,4 +174,8 @@ export const ProductDetailsWrapper = styled.div`
       grid-template-columns: 1fr 1.6fr;
     }
 
+`
+
+export const ProductWrapper = styled.section`
+    background: ${({ theme }) => theme.colors.third};
 `

@@ -12,6 +12,7 @@ export const TopHeaderBox = styled.div`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
+  align-content: flex-end;
 `
 export const TogglerBurgerSection= styled.div`
 display: flex;
@@ -155,24 +156,24 @@ div {
 /* Destkop */
 
 export const StyledHeader = styled.header`
+
 @media (max-width: ${({ theme }) => theme.device.l}) {
+  display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-display: flex;
-background: ${({ theme }) => theme.colors.third};
-position: absolute;
-z-index: 1000;
-top: 0;
-right: 0;
-/* height: ${({ menuOpen, height, items, boxHeight }) => ( 1*boxHeight+'px')}; */
-height: 70px;
-width: calc(100% - 20px);
-padding: 0 10px;
-transition: 300ms;
-/* height: ${({ menuOpen, height, items, boxHeight }) => (menuOpen ? boxHeight+(items+1)*height+'px': 1*height+'px')}; */
-height: ${({ menuOpen, height, items, boxHeight }) => (menuOpen ? 70+items*height+'px': '70px')};
 position: fixed;
+overflow: hidden;
+
+background-color: ${({ theme }) => theme.colors.third};
+z-index: 1000;
+height: 60px;
+width: calc(100% - 10px);
+padding: 0 5px;
+transition: 300ms;
+margin: 0;
+
+height: ${({ menuOpen, height, items, boxHeight }) => (menuOpen ? 70+items*height+'px': '60px')};
 
 ul {
   width: 100%;
@@ -187,7 +188,6 @@ ul {
     list-style: none;
 
     a {
-
       width: 100vw;
       text-align: center;
 
@@ -212,6 +212,7 @@ ul {
 } 
 }
 @media (min-width: ${({ theme }) => theme.device.l}) {
+  padding-top: unset;
   display: flex;
   position: fixed;
   width: 100%;

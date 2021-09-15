@@ -10,11 +10,13 @@ export const SectionTitle = styled.div`
   h4{
     text-transform: capitalize;
     display: inline-block;
-/*     width: min-content; */
     color: ${({ theme }) => theme.colors.secondary};
     margin: 0 20px;
-/*     font-size: 28px;  */
+    font-size: ${({ theme }) => theme.fontSize.xl};
 
+    @media (min-width: ${({ theme }) => theme.device.m}) {
+      font-size: ${({ theme }) => theme.fontSize.l};
+    }
     &::after {
         content: "";
         display: block;
@@ -135,8 +137,6 @@ ${({ productName, theme }) =>
 
 h4{
 color: ${theme.colors.primary};
-/* font-size: 18px; */
-
 
 &::after {
   border-bottom: none; 

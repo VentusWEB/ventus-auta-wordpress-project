@@ -1,6 +1,24 @@
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image'
 
+export const IconBox = styled.div`
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    img {
+        width: 80px;
+        height: 80px;
+    }
+
+    section {
+        svg {
+            width: 80px;
+            height: 80px;
+            fill: orangered;
+        }
+    }
+`
+
 export const ProductCardContainer = styled.div`
     width: 290px;
     height: 400px;

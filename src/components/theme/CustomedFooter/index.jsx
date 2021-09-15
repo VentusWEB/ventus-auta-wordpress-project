@@ -4,7 +4,7 @@ import uuid from 'react-uuid'
 
 import { GatsbyImage } from "gatsby-plugin-image"
 
-import { DefaultIcon } from "components/common"
+import { DefaultIcon, PaddingWrapper } from "components/common"
 
 import { footerIcons, footerInfo, contactItems } from "constans"
 
@@ -16,6 +16,7 @@ export const CustomedFooter = ({ footerLinkContent, footerSocialIcons, footerCon
   const { siteTitle, siteSlogan } = footerContentData
     return (
         <FooterWrapper>
+          <PaddingWrapper>
             <FooterHeader>
 
             </FooterHeader>
@@ -82,6 +83,8 @@ const socialHref = socialHrefs
 
   const alt = socialIcon.img?.altText
 
+  console.log(icon)
+
 
 return (
   <>
@@ -145,7 +148,7 @@ return (
             </FooterInfoBox>
 
 
-
+</PaddingWrapper>
         </FooterWrapper>
     )
 }

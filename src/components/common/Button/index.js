@@ -38,23 +38,23 @@ export const Button = styled.button`
     background: gray;
   }
 
-  ${({ small, theme }) =>
-  small &&
+  ${({ objectStyle, small, theme }) =>
+  (small || objectStyle == 'small') &&
   `
   padding: 0.3rem 1rem;
   font-size: ${ theme.fontSize.s};
 `}
 
-  ${({ secondary, theme }) =>
-    secondary &&
+${({ objectStyle, secondary, theme }) =>
+(secondary || objectStyle == 'secondary') &&
     `
 		background: transparent;
     border: 4px solid ${theme.colors.primary};
     border-bottom: 8px solid  ${theme.colors.primary};
 	`}
 
-  ${({ secondaryBlack, theme }) =>
-    secondaryBlack &&
+  ${({ objectStyle, secondaryBlack, theme }) =>
+    (secondaryBlack || objectStyle == 'secondaryBlack') &&
     `
   background: ${theme.colors.third};
   border: 4px solid ${theme.colors.primary};
@@ -62,24 +62,24 @@ export const Button = styled.button`
   color: ${theme.colors.secondary};
 `}
 
-  ${({ third, theme }) =>
-    third &&
+  ${({ objectStyle, third, theme }) =>
+  (third || objectStyle == 'third') &&
     `
       background: ${theme.colors.secondary}; 
 
       border-bottom: 8px solid  ${theme.colors.third}; 
     `}
 
-    ${({ fourth, theme }) =>
-    fourth &&
+    ${({ objectStyle, fourth, theme }) =>
+    (fourth || objectStyle == 'fourth') &&
     `
         background: transparent;
         border: 4px solid ${theme.colors.secondary};
         border-bottom: 8px solid  ${theme.colors.third};
       `}
 
-        ${({ back, theme }) =>
-    back &&
+      ${({ objectStyle, back, theme }) =>
+      (back || objectStyle == 'back') &&
     `
     color: ${theme.colors.secondary};
 		background: transparent;

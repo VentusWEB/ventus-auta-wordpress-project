@@ -5,13 +5,53 @@ import { DefaultWrapper, MainWrapper } from 'components/common'
 export const OfferContentBox = styled.div`
   padding: 2rem;
   line-height: 2rem;
+
 `
 
 export const OffersWrapper = styled(DefaultWrapper)`
-
+  height: 100%;
+  background: ${({ theme }) => theme.colors.third};
   @media (min-width: ${({ theme }) => theme.device.xl}) {
-    height: 600px;
+    height: unset;
+    height: 85vh;
+    overflow-y: scroll;
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-track {
+    background: #666666;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-track:hover {
+    background: #666666;
+  }
+  ::-webkit-scrollbar-track:active {
+    background: #333333;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
   `
 
 
@@ -80,7 +120,7 @@ export const ProductsWrapper = styled.div`
       display: flex;
       flex-direction: row;
       flex-flow: wrap;
-      height: 440px;
+      height: 60vh;
       overflow-y: scroll;
       
     }

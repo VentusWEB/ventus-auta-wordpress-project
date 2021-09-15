@@ -768,5 +768,98 @@
       }
     ],
     "rgb": false
+  },
+  {
+    "id": 5,
+    "name": "Citroën C5",
+    "fullName": "Citroën C5 3.0 V6 HDi Exclusive (X7)",
+    "slug": "citroen-c5-x7",
+    "type": "sedan",
+    "kind": "samochody osobowe",
+    "price": 60000,
+    "grossPrice": 0,
+    "power": 240,
+    "imported": true,
+    "invoice": true,
+    "featured": true,
+    "brand": "Citroën",
+    "model": "C5 3.0 HDi Exclusive (X7)",
+    "generation": "III",
+    "year": 2013,
+    "course": 162000,
+    "capacity": 2992,
+    "oil": "olej napędowy",
+    "petrol": "ON",
+    "gearbox": "automt",
+    "drive": "na przednie koła",
+    "vin": "VF7RDX8ZADL522006",
+    "movie": "https://www.youtube.com/watch?v=t87YNBhK2zU",
+    "loanable": true,
+    "loanPrice": 0,
+    "sold": false,
+    "description": "Samochód importowany z Niemiec, aktualnie zarejestrowany w Polsce na tablice o numerze DKL 52409. W pojeździe silnik 3,0 V6 HDi-241km-połączony z automatyczną skrzynią biegów, lampy bi-xenonowe oraz światła do jazdy dziennej, nawigacja z DVD menu i mapami polski. Dodatkowo elektrycznie regulowane fotele wraz z ich pamięcia, elektrycznie składane lusterka zewnętrzne, wyszukiwanie miejsca do parkowania, klimatronik dwu-strefowy, piękne pełne skórzane fotele, czujniki parkowania przód-tył, dwa komplety alufelg, tempomat dwu-funkcyjny, zawieszenie hydro-activ i o wiele więcej! Pojazd o wyglądzie limuzyny zapewnia niesamowity komfort jazdy.",
+    "extras": [
+      "ABS",
+      "Alarm",
+      "CD",
+      "Centralny zamek",
+      "Elektryczne szyby przednie",
+      "Immobilizer",
+      "Klimatyzacja manualna",
+      "Komputer pokładowy",
+      "Poduszka powietrzna kierowcy",
+      "Poduszka powietrzna pasażera",
+      "Przesuwne drzwi",
+      "Radio niefabryczne",
+      "Tapicerka welurowa",
+      "Wspomaganie kierownicy"
+    ],
+    "mainImage": "./images/all-items/mercedes-benz-sprinter-1.jpg",
+    "secondImage": "./images/all-items/mercedes-benz-sprinter-2.jpg",
+    "gallery": [
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-1.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-2.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-3.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-4.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-5.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-6.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-7.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-8.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-9.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-10.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-11.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-12.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-13.jpg"
+      },
+      {
+        "image": "./images/all-items/mercedes-benz-sprinter-14.jpg"
+      }
+    ],
+    "rgb": false
   }
 ]

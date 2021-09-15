@@ -7,7 +7,7 @@ import { Offer, About, ContactLocation } from "components/landing";
 
 const Home = () => {
 
-	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent,  mainArray,  products } = useStaticQuery(
+	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent,  mainArray,  sellIcon, products } = useStaticQuery(
 		graphql`
 	query {
 
@@ -183,7 +183,21 @@ const Home = () => {
 			  }
             }
      
-
+		sellIcon: wpVentusautacore(slug: {eq: "svg-icons-content"}) {
+			id
+			iconSell {
+				  localFile {
+					childImageSharp {
+					  gatsbyImageData
+					}
+					childSvg {
+					  content {
+						data
+					  }
+					}
+				  }
+				}
+			}
 
 		products: allWpVentusautaproduct {
 
@@ -192,6 +206,12 @@ const Home = () => {
 				productName
 				price
 				invoice {
+					checkboxOptions {
+					  checked
+					  value
+					}
+				  }
+				sold {
 					checkboxOptions {
 					  checked
 					  value
@@ -320,6 +340,7 @@ const Home = () => {
 		}
 		  OfferData: wpVentusautamain(slug: {eq: "offer-section-page"}) {
             ...CommonContent
+			textSubheader
 			paragraphs {
 				fieldsList {
 				  paragraph
@@ -356,7 +377,7 @@ const Home = () => {
 			</HeroHeader>
 			<SeparateBox />
 			<div css={`display: flex; flex-direction: column;`}>
-			<Offer productData={products} OfferData={OfferData} />
+			<Offer productData={products} OfferData={OfferData} sellIcon={sellIcon}/>
 			<ContactLocation ContactData={ContactData} LocationData={LocationData} LocationMap={LocationMap} LocationAddress={LocationAddress} LocationContent={LocationContent} ContactItems={ContactItems} ContactBrandInfo={ContactBrandInfo}/>
 			<About AboutData={AboutData} AboutFeatures={AboutFeatures} />
 			</div>
