@@ -141,6 +141,10 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           type
         }
       }
+      power {
+        __typename
+        id
+      }
       price {
         __typename
         id

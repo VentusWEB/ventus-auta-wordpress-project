@@ -7,7 +7,7 @@ import { Offer, About, ContactLocation } from "components/landing";
 
 const Home = () => {
 
-	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent,  mainArray,  sellIcon, products, icons } = useStaticQuery(
+	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent,  mainArray,  sellIcon, products, icons, productCardIcons } = useStaticQuery(
 		graphql`
 	query {
 
@@ -197,6 +197,62 @@ const Home = () => {
 				  }
 				}
 			}
+
+			productCardIcons: wpVentusautacore(slug: {eq: "svg-icons-content"}) {
+
+					price {
+					  localFile {
+						childImageSharp {
+						  gatsbyImageData
+						}
+						childSvg {
+						  content {
+							data
+						  }
+						}
+					  }
+					}
+	
+					vat {
+						localFile {
+						  childImageSharp {
+							gatsbyImageData
+						  }
+						  childSvg {
+							content {
+							  data
+							}
+						  }
+						}
+					  }
+	
+					  petrol {
+						localFile {
+						  childImageSharp {
+							gatsbyImageData
+						  }
+						  childSvg {
+							content {
+							  data
+							}
+						  }
+						}
+					  }
+	  
+					  road {
+						localFile {
+						  childImageSharp {
+							gatsbyImageData
+						  }
+						  childSvg {
+							content {
+							  data
+							}
+						  }
+						}
+					  }
+
+				}
 
 			icons: wpVentusautacore(slug: {eq: "svg-icons-content"}) {
 			iconSell {
@@ -482,7 +538,7 @@ const Home = () => {
 			</HeroHeader>
 			<SeparateBox />
 			<div css={`display: flex; flex-direction: column;`}>
-			<Offer productData={products} OfferData={OfferData} sellIcon={sellIcon} icons={icons}/>
+			<Offer productData={products.nodes.sort(() => Math.random() - 0.5)} OfferData={OfferData} sellIcon={sellIcon} icons={icons} productCardIcons={productCardIcons}/>
 			<ContactLocation ContactData={ContactData} LocationData={LocationData} LocationMap={LocationMap} LocationAddress={LocationAddress} LocationContent={LocationContent} ContactItems={ContactItems} ContactBrandInfo={ContactBrandInfo}/>
 			<About AboutData={AboutData} AboutFeatures={AboutFeatures} />
 			</div>

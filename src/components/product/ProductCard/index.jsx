@@ -3,49 +3,35 @@ import { Link } from "gatsby"
 import { SectionTitle } from 'components/common'
 import { ProductCardContainer, ProductCardIconsContainer, ProductCardPhoto, ProductCardIconsBox, ProductImg, IconBox } from './styles';
 import { ThemeContext } from 'providers/ThemeProvider';
-import uuid from 'react-uuid'
-import { ReactComponent as PriceIcon } from 'assets/product-props/price.svg'
-import { ReactComponent as VatIcon } from 'assets/product-props/vat.svg'
-import { ReactComponent as PetrolIcon } from 'assets/product-props/petrol.svg'
-import { ReactComponent as RoadIcon } from 'assets/product-props/road.svg'
+
+import { ReactComponent as VentusIcon } from 'assets/svgs/vt-logo.svg'
 
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 
 import { Button, PropCard } from "components/common"
 
-export const ProductCard = ({ bgImage, product, i, sellIcon, icons }) => {
+export const ProductCard = ({ bgImage, product, i, sellIcon, icons, iconsArray }) => {
+
     const { themeMode } = useContext(ThemeContext);
     const even = i % 2 == 0
-    const { price, vat, petrol, road } = icons
-
-    console.log(icons)
-    console.log('icons')
     const cardImage = getImage(bgImage)
 
     const icon = product.sold.checkboxOptions[0].checked ? sellIcon?.localFile.childSvg : null
 
     const img = product.sold.checkboxOptions[0].checked ? sellIcon?.localFile.childImageSharp : null
 
+    const contentArray = [
+        product.price + " pln", 
+        product.invoice.checkboxOptions[0].checked ? "tak" : "nie", 
+        product.oil, 
+        product.courseValue, 
+    ]
+
+    iconsArray.map((item, i ) => {
+        item.content = contentArray[i];
+    })
 
 
-    const iconPrice = price?.localFile.childSvg
-
-    const imgPrice = price?.localFile.childImageSharp 
-
-    const iconVAT = vat?.localFile.childSvg
-
-    const imgVAT = vat?.localFile.childImageSharp 
-
-    const iconPetrol = petrol?.localFile.childSvg
-
-    const imgPetrol = petrol?.localFile.childImageSharp 
-
-    const iconRoad = road?.localFile.childSvg
-
-    const imgRoad = road?.localFile.childImageSharp 
-
-
-    console.log(icon)
     return (
         <>
             <ProductCardContainer
@@ -73,68 +59,35 @@ export const ProductCard = ({ bgImage, product, i, sellIcon, icons }) => {
                         }}
                     >
 
-                        <PropCard content={product.price + " pln"}>
+                        {iconsArray.map((item, i) => {
+                            const { content, img, icon } = item
 
-                        {
-                            imgPrice ?
-                            <GatsbyImage image={getImage(imgPrice)} alt="" />
-                            :
-                            iconPrice ?
-                            <section
-                            dangerouslySetInnerHTML={{ __html: iconPrice?.content.data }}
-                            />
-                            :
-                            <PriceIcon />
-                        } 
+                            const image = img?.localFile.childImageSharp
 
-                        </PropCard>
+                            const svg = icon?.localFile.childSvg 
 
-                        <PropCard content={product.invoice.checkboxOptions[0].checked ? "tak" : "nie"}>
-
-                        {
-                            imgVAT ?
-                            <GatsbyImage image={getImage(imgVAT)} alt="" />
-                            :
-                            iconVAT ?
-                            <section
-                            dangerouslySetInnerHTML={{ __html: iconVAT?.content.data }}
-                            />
-                            :
-                            <VatIcon />
-                        } 
-
-                        </PropCard>
-
-                        <PropCard content={product.oil}>
-                            
-                        {
-                            imgPetrol ?
-                            <GatsbyImage image={getImage(imgPetrol)} alt="" />
-                            :
-                            iconPetrol ?
-                            <section
-                            dangerouslySetInnerHTML={{ __html: iconPetrol?.content.data }}
-                            />
-                            :
-                            <PetrolIcon />
+                        return(
+                            <PropCard content={content}>
+    
+                            {
+                                image ?
+                                <GatsbyImage image={getImage(image)} alt="" />
+                                :
+                                svg ?
+                                <section
+                                dangerouslySetInnerHTML={{ __html: svg?.content.data }}
+                                />
+                                :
+                                <VentusIcon />
+                            } 
+    
+                            </PropCard>
+                            )
                         }
+                        
+)}
 
-                        </PropCard>
 
-                        <PropCard content={product.courseValue}>
-
-                        {
-                            imgRoad ?
-                            <GatsbyImage image={getImage(imgRoad)} alt="" />
-                            :
-                            iconRoad ?
-                            <section
-                            dangerouslySetInnerHTML={{ __html: iconRoad?.content.data }}
-                            />
-                            :
-                            <PetrolIcon />
-                        }
-                        </PropCard>
                     </ProductCardIconsBox>
                 </ProductCardIconsContainer>
 

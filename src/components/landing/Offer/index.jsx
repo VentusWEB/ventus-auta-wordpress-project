@@ -7,7 +7,7 @@ import { ProductCard } from 'components/product'
 
 
 
-export const Offer = ({ productData, OfferData, sellIcon, icons }) => {
+export const Offer = ({ productData, OfferData, sellIcon, icons, productCardIcons }) => {
 
     const order = OfferData.order
 
@@ -18,6 +18,41 @@ export const Offer = ({ productData, OfferData, sellIcon, icons }) => {
     const id = OfferData.sectionTitle.replace(" ", "-").toLowerCase()
 
     const content = OfferData.paragraphs.fieldsList
+
+    const { price, vat, petrol, road } = icons
+
+    const iconPrice = price?.localFile.childSvg
+
+    const imgPrice = price?.localFile.childImageSharp 
+
+    const iconVAT = vat?.localFile.childSvg
+
+    const imgVAT = vat?.localFile.childImageSharp 
+
+    const iconPetrol = petrol?.localFile.childSvg
+
+    const imgPetrol = petrol?.localFile.childImageSharp 
+
+    const iconRoad = road?.localFile.childSvg
+
+    const imgRoad = road?.localFile.childImageSharp 
+
+    const iconsArray = []
+
+
+
+    Object.keys(productCardIcons).map(((keyName, i) => {iconsArray.push( {
+        img: productCardIcons[keyName],
+        icon: productCardIcons[keyName],
+    }
+
+        )}))
+
+/*         contentArray.map((item, i) => {
+            iconsArray.push( {
+                item
+        }) */
+
 
     return (
         <Wrapper id={id} css={`{ order: ${order}; }`} >
@@ -45,11 +80,11 @@ export const Offer = ({ productData, OfferData, sellIcon, icons }) => {
                 css={`
                     padding: 50px 0 100px;
                 `}>
-                    {productData.nodes.map((product, i) => {
+                    {productData.map((product, i) => {
 
                         return (
                             <>
-                                <ProductCard icons={icons} sellIcon={sellIcon.iconSell} key={i} product={product} bgImage={product.mainImage.localFile.childImageSharp.gatsbyImageData} i={i} />
+                                <ProductCard icons={icons} sellIcon={sellIcon.iconSell} key={i} product={product} bgImage={product.mainImage.localFile.childImageSharp.gatsbyImageData} i={i} iconsArray={iconsArray}  />
                             </>
 
                         )

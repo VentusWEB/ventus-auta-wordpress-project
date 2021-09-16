@@ -8,8 +8,7 @@ import { ProductModalGallery } from 'gatsby-plugin-modal-gallery'
 
 import { ProductWrapper, VinBox, ParametersBox, GridContentBox, GridBoxDetails, GridInfoBox, ModalContainer, ModalInfoBox, ModalGalleryBox } from "components/product"
 
-import { alternativeLinks } from "constans/nav-items"
-
+import { ReactComponent as VentusIcon } from 'assets/svgs/vt-logo.svg'
 
 import { ReactComponent as PriceIcon } from 'assets/product-props/price.svg'
 import { ReactComponent as VatIcon } from 'assets/product-props/vat.svg'
@@ -100,6 +99,114 @@ query($slug: String!) {
   } 
 
 
+  productCardIcons: wpVentusautacore(slug: {eq: "svg-icons-content"}) {
+
+      price {
+        localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+        childSvg {
+          content {
+          data
+          }
+        }
+        }
+      }
+
+      vat {
+        localFile {
+          childImageSharp {
+          gatsbyImageData
+          }
+          childSvg {
+          content {
+            data
+          }
+          }
+        }
+        }
+
+        petrol {
+          localFile {
+            childImageSharp {
+            gatsbyImageData
+            }
+            childSvg {
+            content {
+              data
+            }
+            }
+          }
+          }
+  
+          road {
+          localFile {
+            childImageSharp {
+            gatsbyImageData
+            }
+            childSvg {
+            content {
+              data
+            }
+            }
+          }
+          }
+
+        power {
+            localFile {
+              childImageSharp {
+              gatsbyImageData
+              }
+              childSvg {
+              content {
+                data
+              }
+              }
+            }
+            }
+
+          engine {
+              localFile {
+                childImageSharp {
+                gatsbyImageData
+                }
+                childSvg {
+                content {
+                  data
+                }
+                }
+              }
+              }
+        
+        gearboxAutomatic {
+        localFile {
+          childImageSharp {
+          gatsbyImageData
+          }
+          childSvg {
+          content {
+            data
+          }
+          }
+        }
+        }
+
+        gearboxManual {
+        localFile {
+          childImageSharp {
+          gatsbyImageData
+          }
+          childSvg {
+          content {
+            data
+          }
+          }
+        }
+        }
+
+    }
+
 
       SeoData: wpVentusautacore(slug: {eq: "seo-content"}) {
         author
@@ -144,6 +251,111 @@ query($slug: String!) {
           }
       }
 
+      icons: wpVentusautacore(slug: {eq: "svg-icons-content"}) {
+        iconSell {
+            localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+            childSvg {
+              content {
+              data
+              }
+            }
+            }
+          }
+  
+          engine {
+            localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+            childSvg {
+              content {
+              data
+              }
+            }
+            }
+          }
+  
+          gearboxAutomatic {
+            localFile {
+              childImageSharp {
+              gatsbyImageData
+              }
+              childSvg {
+              content {
+                data
+              }
+              }
+            }
+            }
+    
+            gearboxManual {
+            localFile {
+              childImageSharp {
+              gatsbyImageData
+              }
+              childSvg {
+              content {
+                data
+              }
+              }
+            }
+            }
+  
+            petrol {
+            localFile {
+              childImageSharp {
+              gatsbyImageData
+              }
+              childSvg {
+              content {
+                data
+              }
+              }
+            }
+            }
+    
+            road {
+            localFile {
+              childImageSharp {
+              gatsbyImageData
+              }
+              childSvg {
+              content {
+                data
+              }
+              }
+            }
+            }
+  
+            vat {
+            localFile {
+              childImageSharp {
+              gatsbyImageData
+              }
+              childSvg {
+              content {
+                data
+              }
+              }
+            }
+            }
+    
+          price {
+            localFile {
+              childImageSharp {
+              gatsbyImageData
+              }
+              childSvg {
+              content {
+                data
+              }
+              }
+            }
+            }
+        }
   
 }
 `
@@ -181,8 +393,6 @@ const ProductPage = ({ data, key }) => {
   }
 
   const backgroundImage = getImage(data.img);
-
-  const SeoContent = data.SeoData
 
   const singleProductData = data.wpVentusautaproduct
 
@@ -242,9 +452,48 @@ const ProductPage = ({ data, key }) => {
     year
   } = singleProductData
 
+  const icons = data.icons
+
+  console.log(icons.price)
+
+  console.log('icons.price')
+
+  const productCardIcons = data.productCardIcons
+
+  const iconsArray = []
+
+
+
+  Object.keys(productCardIcons).map(((keyName, i) => {iconsArray.push( {
+      img: productCardIcons[keyName],
+      icon: productCardIcons[keyName],
+  }
+
+      )}))
+
+      const contentArray = [
+        price + " pln", 
+        invoice.checkboxOptions[0].checked ? "tak" : "nie", 
+        oil, 
+        courseValue,
+        power + " km",
+        capacity + " cm3",
+        gearbox
+
+    ]
+
+    iconsArray.map((item, i ) => {
+        item.content = contentArray[i];
+    })
+
+
+      console.log(iconsArray)
+      console.log('iconsArray')
+
+
   return (
-    <Layout alternativeLinks={alternativeLinks}>
-      <Seo SeoData={SeoContent} />
+    <Layout>
+      <Seo SeoData={data.SeoData} />
       <CustomedNav scroll={false} menuItems={menuArray.sort(() => Math.random() - 0.5).slice(0,3)} />
       <HeroHeader small
         bgImage={backgroundImage}
@@ -273,33 +522,40 @@ const ProductPage = ({ data, key }) => {
             <ParametersBox >
               <h1>{productName}</h1>
               <SectionTitle fifth ><h4>Parametry</h4></SectionTitle>
-              <PropCard content={price + " pln"}>
-                <PriceIcon />
-              </PropCard>
 
-              <PropCard content={invoice.checkboxOptions[0].checked ? "tak" : "nie"}>
-                <VatIcon />
-              </PropCard>
+              {iconsArray.map((item, i) => {
+                            const { content, img, icon } = item
 
-              <PropCard content={oil}>
-                <PetrolIcon />
-              </PropCard>
+                            const image = img?.localFile.childImageSharp
 
-              <PropCard content={courseValue}>
-                <RoadIcon />
-              </PropCard>
+                            const svg = icon?.localFile.childSvg 
 
-              <PropCard content={power + " km"}>
-                <HorseIcon />
-              </PropCard>
+                            if(content) {
+                              return(
 
-              <PropCard content={capacity + " cm3"}>
-                <EngineIcon />
-              </PropCard>
+                                <PropCard content={content}>
+        
+                                {
+                                    image ?
+                                    <GatsbyImage image={getImage(image)} alt="" />
+                                    :
+                                    svg ?
+                                    <section
+                                    dangerouslySetInnerHTML={{ __html: svg?.content.data }}
+                                    />
+                                    :
+                                    <VentusIcon />
+                                } 
+        
+                                </PropCard>
+                                )
+                            }
 
-              <PropCard content={gearbox}>
-                {gearbox === 'manual' ? <ManualIcon /> : <AutomatIcon />}
-              </PropCard>
+
+                        }
+                        
+)}
+
 
             </ParametersBox>
 

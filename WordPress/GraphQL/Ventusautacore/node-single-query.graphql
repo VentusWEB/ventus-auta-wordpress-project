@@ -140,6 +140,10 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
         type
       }
     }
+    power {
+      __typename
+      id
+    }
     price {
       __typename
       id

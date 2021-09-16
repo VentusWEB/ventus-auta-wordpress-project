@@ -69,9 +69,7 @@ const objectStyle = objectStyles
 
 const objectHref = objectHrefs
   .filter(item => item !== undefined)[0]['content']
-  
 
-console.log(objectStyle)
 return (
   <>
                             <a key={uuid()} href={objectHref}>
