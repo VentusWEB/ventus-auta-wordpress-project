@@ -11,8 +11,8 @@ const Toggler = () => {
       <Toggle
       
         icons={{
-          checked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">{themeMode == 'dark' ? '☾' : '☼'}</ToggleIcons>,
-          unchecked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">{themeMode == 'dark' ? '☾' : '☼'}</ToggleIcons>,
+          checked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">☾</ToggleIcons>,
+          unchecked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">☼</ToggleIcons>,
         }}
         onChange={toggleTheme}
       />
