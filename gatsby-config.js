@@ -54,15 +54,7 @@ module.exports = {
 				path: `${__dirname}/src/images`,
 			},
 		},
-		{
-			resolve: `gatsby-source-filesystem`,
-			options: {
-				name: `itemsData`,
-				path: `./itemsData/`,
-			},
-		},
 		`gatsby-transformer-sharp`,
-		`gatsby-transformer-json`,
 		`gatsby-plugin-sharp`,
 		{
 			resolve: `gatsby-plugin-manifest`,
@@ -70,8 +62,8 @@ module.exports = {
 				name: `Ventus Trade Auta`,
 				short_name: `VT Auta`,
 				start_url: `/`,
-				background_color: `#1409a0`,
-				theme_color: `#1409a0`,
+				background_color: `#8c98ff`,
+				theme_color: `#020028`,
 				display: `minimal-ui`,
 				icon: `src/images/ventus-trade-logo.png`, // This path is relative to the root of the site.
 			},
