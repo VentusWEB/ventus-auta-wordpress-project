@@ -42,6 +42,14 @@ align-items: center;
 padding-top: 10px;
 padding-right: 20px;
 padding-bottom: 10px;
+button {
+  a {
+    @media (max-width: ${({ theme }) => theme.device.s}) {
+      font-size: 10px !important;
+    }
+  } 
+}
+
 @media (min-width: ${({ theme }) => theme.device.l}) {
   display: none;
 }
@@ -170,6 +178,7 @@ align-items: center;
 position: fixed;
 overflow: hidden;
 
+
 background-color: ${({ theme }) => theme.colors.third};
 z-index: 1000;
 height: 60px;
@@ -192,10 +201,14 @@ ul {
   li {
     list-style: none;
 
+    button {
+      font-size: 20px;
+    }
+
     a {
       width: 100vw;
       text-align: center;
-
+      font-size: 16px;
       display: block;
       text-decoration: none;
       padding: 0.5rem 1rem 0.5rem 1rem;
@@ -269,10 +282,17 @@ position: relative;
 
 
 
+
 h3 {
   margin: 0;
   line-height: 0;
+  @media (max-width: ${({ theme }) => theme.device.s}) {
+    font-size: 14px;
+  }
+
 }
+
+
 
 
 img, svg, div {

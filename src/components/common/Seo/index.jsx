@@ -100,6 +100,7 @@ export const Seo = ({SeoData}) => {
             <meta name="twitter:title" content={defaultTitle} />
             <meta name="twitter:description" content={defaultDescription} />
             <meta name="twitter:image:src" content={thumbnail} />
+            <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1"/>
             <script type="application/ld+json">{structuredDataOrganization}</script>
             <title>{defaultTitle}</title>
             <html lang={lang} dir={dir} />

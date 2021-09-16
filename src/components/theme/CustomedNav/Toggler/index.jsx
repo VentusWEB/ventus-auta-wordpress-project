@@ -9,9 +9,10 @@ const Toggler = () => {
   return (
     <ToggleWrapper>
       <Toggle
+      
         icons={{
-          checked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">☾</ToggleIcons>,
-          unchecked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">☼</ToggleIcons>,
+          checked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">{themeMode == 'dark' ? '☾' : '☼'}</ToggleIcons>,
+          unchecked: <ToggleIcons alt={themeMode} role="img" aria-label="change-theme">{themeMode == 'dark' ? '☾' : '☼'}</ToggleIcons>,
         }}
         onChange={toggleTheme}
       />

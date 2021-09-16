@@ -8,21 +8,19 @@ import { Link } from 'gatsby'
 
 import scrollTo from "gatsby-plugin-smoothscroll"
 
-
 import uuid from 'react-uuid'
 
 import { LogoBox, StyledHeader, ScrollLinkUl, MenuIconContainer, MenuIcon, DesktopToggler,  TopHeaderBox, TogglerBurgerBox } from "./styles"
 import { NavButton, Button } from 'components/common'
 import Toggler from './Toggler';
 
-export const CustomedNav = ({ /* siteTitle,  */menuItems, scroll, Title, LogoImg, LogoAlt}) => {
+export const CustomedNav = ({ menuItems, scroll, Title, LogoImg, LogoAlt}) => {
 
         const { HeaderData } = useStaticQuery(
             graphql`
                 query {
                   HeaderData: wpVentusautacore(slug: {eq: "site-content"}) {
                         siteTitle
-                        siteSubTitle
                         siteLogo {
                             localFile {
                               childSvg {
@@ -40,7 +38,7 @@ export const CustomedNav = ({ /* siteTitle,  */menuItems, scroll, Title, LogoImg
                 `
         );
 
-        const { siteTitle, siteSubTitle, siteLogo } = HeaderData
+        const { siteTitle, siteLogo } = HeaderData
 
         const icon = siteLogo?.localFile.childSvg
 
@@ -50,18 +48,7 @@ export const CustomedNav = ({ /* siteTitle,  */menuItems, scroll, Title, LogoImg
   const [menuOpen, toggleMenuOpen] = useState(false)
   const liRef = useRef(null)
   const boxRef = useRef(null)
-/*   useEffect(() => {
-    const div = liRef.current;
-    console.log(liRef)
-  }, [liRef]); */
 
-  let showStyle = null
-  if (isVisible) {
-    showStyle = { color: 'green' }
-  } else {
-    showStyle = null
-  }
- 
 
   return (
     <>
@@ -106,21 +93,14 @@ export const CustomedNav = ({ /* siteTitle,  */menuItems, scroll, Title, LogoImg
 
         {menuItems ?
         (<ScrollLinkUl
-          style={showStyle}
           items={menuItems.map(a => a.path)}
           currentClassName="current"
           
           >
 
-
-            
-
-
           {
 
           menuItems.map(value => {
-
-
 
             if(scroll==true) {
               return (

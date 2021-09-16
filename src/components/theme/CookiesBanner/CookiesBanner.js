@@ -5,7 +5,7 @@
  
 
  
- const CookiesBanner = ({ children, offerLinks, showBelow }) => {
+ const CookiesBanner = ({ showBelow }) => {
 
   const [show, setShow] = useState(showBelow ? false : true)
 
@@ -34,11 +34,10 @@
              buttonText="Wszystko jasne!"
              cookieName="myAwesomeCookieName2"
              style={{
-              transition: "0.8s", 
               animation: `coockieBoxAnimation .5s ease-in-out normal forwards`, 
               animationIterationCount: "1", 
-              transition: "all .2s ease-in-out",
-              zIndex: "1000"
+              transition: "all .5s ease-in-out",
+              zIndex: "10000"
              }}
              buttonStyle={{ background: `${({ theme }) => theme.colors.secondary}`, fontSize: "12px" }}
              expires={150}

@@ -16,8 +16,8 @@ export const ScrollButtonIcon = styled(IoIosArrowDropupCircle)`
 export const ScrollButton = styled.button`
             z-index: 2;
             position: fixed;
-            bottom: 0;
-            right: 0;
+            bottom: 50px;
+            right: 0px;
             background-color: transparent;
             border: none;
             font-size: 50px;

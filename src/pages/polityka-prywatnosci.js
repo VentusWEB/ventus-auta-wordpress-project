@@ -81,7 +81,7 @@ const PolicyPage = () => {
             >
             </HeroHeader>
 
-            <SectionTitle secondary>
+            <SectionTitle>
                 <h4>{policyTitle}</h4>
             </SectionTitle>
 
