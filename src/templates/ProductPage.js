@@ -379,6 +379,8 @@ const ProductPage = ({ data, key }) => {
     minModalImgHeight: "90vh",
     maxModalImgWidth: "90vw",
     minModalImgWidth: "90vw",
+    modalGradientTop: "white",
+    modalGradientBottom: "blue",
   
     overlay: {
       backgroundColor: 'rgba(255,255,255,.8)',

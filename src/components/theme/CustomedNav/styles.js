@@ -53,6 +53,7 @@ export const ScrollLinkUl = styled(Scrollspy)`
   transition: ${({ theme }) => theme.transitions.primary}; 
 }
 
+
 .current button::before {
   position: absolute;
   content: '';
@@ -92,7 +93,6 @@ li::before{
     margin: 0;
     padding: 0;
     position: relative;
-  
   }
  
 }
@@ -134,7 +134,7 @@ z-index: 11;
 div {
   width: 2rem;
   height: 0.25rem;
-  background: ${({ menuOpen, theme }) => (menuOpen ? theme.colors.primary : theme.colors.secondaryLight)};
+  background: ${({ menuOpen, theme }) => (menuOpen ? theme.colors.primaryLight : theme.colors.secondary)};
   border-radius: 10px;
   transform-origin: 1px;
   transition: opacity 300ms, transform 300ms;
@@ -199,7 +199,7 @@ ul {
       display: block;
       text-decoration: none;
       padding: 0.5rem 1rem 0.5rem 1rem;
-      color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.primaryLight};
       font-weight: 700;
       text-transform: capitalize;
       cursor: pointer;

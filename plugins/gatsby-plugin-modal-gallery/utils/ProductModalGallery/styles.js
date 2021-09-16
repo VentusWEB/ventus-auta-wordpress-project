@@ -12,9 +12,10 @@ export const ModalImageBox = styled.div`
     position: relative;
     display: grid;
     width: 100%;
-    max-height: ${({ styles }) => styles.maxModalImgHeight ? styles.maxModalImgHeight : "80vh" };
-    min-height: ${({ styles }) => styles.minModalImgHeight ? styles.minModalImgHeight : "70vh" };
-    max-width: ${({ styles }) => styles.maxModalImgWidth ? styles.maxModalImgWidth : "90vw" };
+    height: 100vh;
+    width: 100vw;
+    background: ${({ styles }) => styles.modalGradientTop ? styles.modalGradientTop : "rgb(0,0,100)"};
+    background: linear-gradient(0deg, ${({ styles }) => styles.modalGradientTop ? styles.modalGradientTop : "rgb(0,0,100)"} 0%, ${({ styles }) => styles.modalGradientBottom ? styles.modalGradientBottom : "rgb(0,0,100)"} 100%);
 
 `
 
@@ -119,7 +120,7 @@ export const ControlersBox = styled.div`
 export const Controler = styled(IoIosArrowDropleftCircle)`
     margin: 0 10px;
 
-    color: ${({ styles }) => styles.controlsColor ? styles.controlsColor : "white" };
+    color: transparent;
     font-size: ${({ styles }) => styles.controlsSize ? styles.controlsSize : "50px" };
     transition: ${({ styles}) => styles.transition ? styles.transition : "2s" }; 
     opacity: ${({ styles }) => styles.controlsOpacity ? styles.controlsOpacity : ".4" }; 
@@ -131,6 +132,7 @@ export const Controler = styled(IoIosArrowDropleftCircle)`
     }
 
     @media (min-width: ${({ styles }) => styles.mediaWidth ? styles.mediaWidth : "786px" }) {
+        color: ${({ styles }) => styles.controlsColor ? styles.controlsColor : "white" };
         font-size: ${({ styles }) => styles.controlsSizeBig ? styles.controlsSizeBig : "50px" }; 
     }
 
@@ -189,6 +191,11 @@ export const ModalGatsbyImage = styled(GatsbyImage)`
 max-height: 100vh;
 max-width: 100vw;
 margin: auto;
+
+img {
+    object-fit: contain !important;
+}
+
 
 
 `
