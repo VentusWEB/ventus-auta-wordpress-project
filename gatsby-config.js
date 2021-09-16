@@ -84,7 +84,7 @@ module.exports = {
 				devMode: true,
 			},
 		}, */
-		{
+/* 		{
 			resolve: `gatsby-plugin-yandex-metrika`,
 			options: {
 				// The ID of yandex metrika.
@@ -100,7 +100,7 @@ module.exports = {
 				// Async enables earlier loading of the metrika but it can negatively affect page loading speed. The default value is `false`.
 				defer: true,
 			},
-		},
+		}, */
 		{
 			resolve: `gatsby-source-wordpress`,
 			options: {
