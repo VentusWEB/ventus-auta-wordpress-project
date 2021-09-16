@@ -7,7 +7,7 @@ import { Offer, About, ContactLocation } from "components/landing";
 
 const Home = () => {
 
-	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent,  mainArray,  sellIcon, products } = useStaticQuery(
+	const { SeoData, OfferData, AboutData, AboutFeatures, LocationData, ContactData, ContactBrandInfo, ContactItems, LocationAddress, LocationMap, LocationContent,  mainArray,  sellIcon, products, icons } = useStaticQuery(
 		graphql`
 	query {
 
@@ -184,7 +184,6 @@ const Home = () => {
             }
      
 		sellIcon: wpVentusautacore(slug: {eq: "svg-icons-content"}) {
-			id
 			iconSell {
 				  localFile {
 					childImageSharp {
@@ -197,6 +196,112 @@ const Home = () => {
 					}
 				  }
 				}
+			}
+
+			icons: wpVentusautacore(slug: {eq: "svg-icons-content"}) {
+			iconSell {
+				  localFile {
+					childImageSharp {
+					  gatsbyImageData
+					}
+					childSvg {
+					  content {
+						data
+					  }
+					}
+				  }
+				}
+
+				engine {
+				  localFile {
+					childImageSharp {
+					  gatsbyImageData
+					}
+					childSvg {
+					  content {
+						data
+					  }
+					}
+				  }
+				}
+
+				gearboxAutomatic {
+					localFile {
+					  childImageSharp {
+						gatsbyImageData
+					  }
+					  childSvg {
+						content {
+						  data
+						}
+					  }
+					}
+				  }
+  
+				  gearboxManual {
+					localFile {
+					  childImageSharp {
+						gatsbyImageData
+					  }
+					  childSvg {
+						content {
+						  data
+						}
+					  }
+					}
+				  }
+
+				  petrol {
+					localFile {
+					  childImageSharp {
+						gatsbyImageData
+					  }
+					  childSvg {
+						content {
+						  data
+						}
+					  }
+					}
+				  }
+  
+				  road {
+					localFile {
+					  childImageSharp {
+						gatsbyImageData
+					  }
+					  childSvg {
+						content {
+						  data
+						}
+					  }
+					}
+				  }
+
+				  vat {
+					localFile {
+					  childImageSharp {
+						gatsbyImageData
+					  }
+					  childSvg {
+						content {
+						  data
+						}
+					  }
+					}
+				  }
+  
+			  price {
+					localFile {
+					  childImageSharp {
+						gatsbyImageData
+					  }
+					  childSvg {
+						content {
+						  data
+						}
+					  }
+					}
+				  }
 			}
 
 		products: allWpVentusautaproduct {
@@ -377,7 +482,7 @@ const Home = () => {
 			</HeroHeader>
 			<SeparateBox />
 			<div css={`display: flex; flex-direction: column;`}>
-			<Offer productData={products} OfferData={OfferData} sellIcon={sellIcon}/>
+			<Offer productData={products} OfferData={OfferData} sellIcon={sellIcon} icons={icons}/>
 			<ContactLocation ContactData={ContactData} LocationData={LocationData} LocationMap={LocationMap} LocationAddress={LocationAddress} LocationContent={LocationContent} ContactItems={ContactItems} ContactBrandInfo={ContactBrandInfo}/>
 			<About AboutData={AboutData} AboutFeatures={AboutFeatures} />
 			</div>

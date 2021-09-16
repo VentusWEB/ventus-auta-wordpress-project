@@ -41,6 +41,10 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       dir
       email
       enclosure
+      engine {
+        __typename
+        id
+      }
       facebook
       facebookFooter {
         multiBox {
@@ -66,6 +70,14 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
       }
       foundingDate
+      gearboxAutomatic {
+        __typename
+        id
+      }
+      gearboxManual {
+        __typename
+        id
+      }
       github
       googleMyBusinessFooter {
         multiBox {
@@ -113,6 +125,10 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       moveFillBgBottomDarkmode
       moveFillBgTop
       moveFillBgTopDarkmode
+      petrol {
+        __typename
+        id
+      }
       phone
       phoneFooter {
         multiBox {
@@ -125,9 +141,17 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           type
         }
       }
+      price {
+        __typename
+        id
+      }
       primary
       primaryLight
       region
+      road {
+        __typename
+        id
+      }
       secondary
       secondaryLight
       siteBrand
@@ -159,6 +183,10 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       twitter
       uri
       url
+      vat {
+        __typename
+        id
+      }
       whatsappFooter {
         multiBox {
           content

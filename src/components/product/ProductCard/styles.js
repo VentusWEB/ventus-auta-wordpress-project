@@ -11,10 +11,15 @@ export const IconBox = styled.div`
     }
 
     section {
+        background: rgba(0,0,0,.8);
         svg {
             width: 80px;
             height: 80px;
             fill: orangered;
+
+            path {
+                fill: orangered !important;
+            }
         }
     }
 `
@@ -52,7 +57,6 @@ export const ProductCardPhoto = styled.div`
     } */
 `
 export const ProductCardIcons = styled.div`
-    background: yellow;
     position: absolute:
     bottom: 0;
     left: 0;
@@ -72,8 +76,6 @@ export const ProductCardIconsBox = styled.div`
 export const ProductIcon = styled.div`
     height: 100%;
     width: 50px;
-    background: yellow;
-
 `
 
 export const ProductImg = styled(GatsbyImage)`

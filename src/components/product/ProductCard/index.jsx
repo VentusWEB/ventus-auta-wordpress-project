@@ -13,15 +13,38 @@ import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 
 import { Button, PropCard } from "components/common"
 
-export const ProductCard = ({ bgImage, product, i, sellIcon }) => {
+export const ProductCard = ({ bgImage, product, i, sellIcon, icons }) => {
     const { themeMode } = useContext(ThemeContext);
     const even = i % 2 == 0
+    const { price, vat, petrol, road } = icons
 
+    console.log(icons)
+    console.log('icons')
     const cardImage = getImage(bgImage)
 
     const icon = product.sold.checkboxOptions[0].checked ? sellIcon?.localFile.childSvg : null
 
     const img = product.sold.checkboxOptions[0].checked ? sellIcon?.localFile.childImageSharp : null
+
+
+
+    const iconPrice = price?.localFile.childSvg
+
+    const imgPrice = price?.localFile.childImageSharp 
+
+    const iconVAT = vat?.localFile.childSvg
+
+    const imgVAT = vat?.localFile.childImageSharp 
+
+    const iconPetrol = petrol?.localFile.childSvg
+
+    const imgPetrol = petrol?.localFile.childImageSharp 
+
+    const iconRoad = road?.localFile.childSvg
+
+    const imgRoad = road?.localFile.childImageSharp 
+
+
     console.log(icon)
     return (
         <>
@@ -51,19 +74,66 @@ export const ProductCard = ({ bgImage, product, i, sellIcon }) => {
                     >
 
                         <PropCard content={product.price + " pln"}>
+
+                        {
+                            imgPrice ?
+                            <GatsbyImage image={getImage(imgPrice)} alt="" />
+                            :
+                            iconPrice ?
+                            <section
+                            dangerouslySetInnerHTML={{ __html: iconPrice?.content.data }}
+                            />
+                            :
                             <PriceIcon />
+                        } 
+
                         </PropCard>
 
                         <PropCard content={product.invoice.checkboxOptions[0].checked ? "tak" : "nie"}>
+
+                        {
+                            imgVAT ?
+                            <GatsbyImage image={getImage(imgVAT)} alt="" />
+                            :
+                            iconVAT ?
+                            <section
+                            dangerouslySetInnerHTML={{ __html: iconVAT?.content.data }}
+                            />
+                            :
                             <VatIcon />
+                        } 
+
                         </PropCard>
 
                         <PropCard content={product.oil}>
+                            
+                        {
+                            imgPetrol ?
+                            <GatsbyImage image={getImage(imgPetrol)} alt="" />
+                            :
+                            iconPetrol ?
+                            <section
+                            dangerouslySetInnerHTML={{ __html: iconPetrol?.content.data }}
+                            />
+                            :
                             <PetrolIcon />
+                        }
+
                         </PropCard>
 
                         <PropCard content={product.courseValue}>
-                            <RoadIcon />
+
+                        {
+                            imgRoad ?
+                            <GatsbyImage image={getImage(imgRoad)} alt="" />
+                            :
+                            iconRoad ?
+                            <section
+                            dangerouslySetInnerHTML={{ __html: iconRoad?.content.data }}
+                            />
+                            :
+                            <PetrolIcon />
+                        }
                         </PropCard>
                     </ProductCardIconsBox>
                 </ProductCardIconsContainer>
@@ -79,7 +149,7 @@ export const ProductCard = ({ bgImage, product, i, sellIcon }) => {
                         right: (even ? "0" : ""),
                         left: (even ? "" : "0")
                     }}>
-                                {
+            {
                 img ?
                 <GatsbyImage image={getImage(img)} alt={bgImageAlt ? bgImageAlt : siteTitle} />
                 :

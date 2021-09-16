@@ -7,7 +7,7 @@ import { ProductCard } from 'components/product'
 
 
 
-export const Offer = ({ productData, OfferData, sellIcon }) => {
+export const Offer = ({ productData, OfferData, sellIcon, icons }) => {
 
     const order = OfferData.order
 
@@ -49,7 +49,7 @@ export const Offer = ({ productData, OfferData, sellIcon }) => {
 
                         return (
                             <>
-                                <ProductCard sellIcon={sellIcon.iconSell} key={i} product={product} bgImage={product.mainImage.localFile.childImageSharp.gatsbyImageData} i={i} />
+                                <ProductCard icons={icons} sellIcon={sellIcon.iconSell} key={i} product={product} bgImage={product.mainImage.localFile.childImageSharp.gatsbyImageData} i={i} />
                             </>
 
                         )
