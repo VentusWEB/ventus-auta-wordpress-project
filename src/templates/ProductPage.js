@@ -25,6 +25,7 @@ import { ReactComponent as EngineIcon } from 'assets/product-props/engine.svg'
 export const query = graphql`
 query($slug: String!) {
     wpVentusautaproduct(slug: { eq: $slug }) {
+    course
     courseValue
     description
     vin
@@ -456,17 +457,13 @@ const ProductPage = ({ data, key }) => {
 
   const icons = data.icons
 
-  console.log(icons.price)
-
-  console.log('icons.price')
-
   const productCardIcons = data.productCardIcons
 
   const iconsArray = []
 
 
 
-  Object.keys(productCardIcons).map(((keyName, i) => {iconsArray.push( {
+  Object.keys(productCardIcons).map(((keyName) => {iconsArray.push( {
       img: productCardIcons[keyName],
       icon: productCardIcons[keyName],
   }
@@ -477,7 +474,7 @@ const ProductPage = ({ data, key }) => {
         price + " pln", 
         invoice.checkboxOptions[0].checked ? "tak" : "nie", 
         oil, 
-        courseValue,
+        course + "" + courseValue,
         power + " km",
         capacity + " cm3",
         gearbox

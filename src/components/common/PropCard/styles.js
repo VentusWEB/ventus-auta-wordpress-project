@@ -149,11 +149,11 @@ export const PropCardInfo = styled.div`
             text-transform: uppercase;
 
             @media (min-width: ${({ theme }) => theme.device.l}) {
-              font-size: clamp(0.4rem,1vmax,.6rem)
+              font-size: clamp(0.4rem,1vmax,.6rem);
             }
 
             @media (min-width: ${({ theme }) => theme.device.xxl}) {
-              font-size: clamp(0.75rem,1.5vmax,.95rem);
+              font-size: clamp(0.5rem,.8vmax,.95rem);
             }
 
 

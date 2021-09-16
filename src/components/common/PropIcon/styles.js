@@ -35,10 +35,10 @@ export const PropIconInfo = styled.div`
     color:  ${({ theme }) => theme.colors.secondary};
 
     @media (min-width: ${({ theme }) => theme.device.l}) {
-        font-size: clamp(0.75rem,1vmax,.8rem);
+        font-size: ${({ theme }) => theme.fontSize.s}; 
       }
 
     @media (min-width: ${({ theme }) => theme.device.xxl}) {
-        font-size: clamp(0.75rem,1vmax,.8rem);
+        font-size: ${({ theme }) => theme.fontSize.s}; 
       }
 `
